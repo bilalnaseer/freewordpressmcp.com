@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Video Tutorials — Free WordPress MCP Plugin</title>
+<meta name="description" content="Step-by-step video tutorials for installing and using the Free WordPress MCP plugin. Connect Claude, ChatGPT, and any MCP-compatible AI agent to your WordPress site.">
+<meta name="author" content="WebSensePro">
+<meta name="theme-color" content="#0B1220">
+<link rel="canonical" href="https://freewordpressmcp.com/tutorials">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://freewordpressmcp.com/tutorials">
+<meta property="og:title" content="Video Tutorials — Free WordPress MCP Plugin">
+<meta property="og:description" content="Step-by-step video tutorials for installing and using the Free WordPress MCP plugin.">
+<meta property="og:image" content="https://freewordpressmcp.com/og.png">
+<meta property="og:site_name" content="Free WordPress MCP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Video Tutorials — Free WordPress MCP Plugin">
+<meta name="twitter:description" content="Step-by-step video tutorials for the Free WordPress MCP plugin.">
+<meta name="twitter:image" content="https://freewordpressmcp.com/og.png">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1220'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23F5A524'%3EW%3C/text%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0B1220;
+    --ink-2: #131C2E;
+    --paper: #F7F7F2;
+    --paper-dim: #E8E6DD;
+    --rule: #1F2A40;
+    --rule-light: #D9D6CB;
+    --blue: #2271B1;
+    --blue-hover: #135E96;
+    --amber: #F5A524;
+    --muted: #5C6373;
+    --muted-ink: #8A93A6;
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-hover); text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ----- top bar ----- */
+  .topbar {
+    border-bottom: 1px solid var(--rule-light);
+    background: var(--paper);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .brand .dot { color: var(--amber); }
+  .topbar nav { display: flex; gap: 24px; font-size: 15px; }
+  .topbar nav a { color: var(--ink); }
+  .topbar nav a:hover { color: var(--blue); }
+  .topbar nav a[aria-current="page"] { color: var(--blue); font-weight: 600; }
+  @media (max-width: 640px) { .topbar nav { display: none; } }
+
+  /* ----- page header ----- */
+  .page-hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before {
+    content: ""; width: 28px; height: 1px; background: var(--amber);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .lede {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0;
+  }
+
+  /* ----- tutorial grid ----- */
+  .tutorials {
+    padding: 80px 0;
+  }
+  .tutorial-list {
+    display: grid;
+    gap: 64px;
+  }
+  .tutorial-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .tutorial-meta {
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .tutorial-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+  }
+  .tutorial-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .tutorial-desc {
+    margin: 8px 0 0 0;
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 760px;
+  }
+  .video-frame {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--ink);
+    box-shadow: 0 24px 48px -16px rgba(11,18,32,0.22);
+  }
+  .video-frame iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  .tutorial-divider {
+    border: none;
+    border-top: 1px solid var(--rule-light);
+    margin: 0;
+  }
+
+  /* ----- closer ----- */
+  .closer {
+    text-align: center;
+    padding: 100px 24px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: 0 0 16px;
+  }
+  .closer h2 { color: var(--paper); margin-bottom: 20px; }
+  .closer p { color: var(--muted-ink); max-width: 540px; margin: 0 auto 36px; font-size: 18px; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 15px;
+    transition: transform 0.08s ease, background 0.15s ease;
+    border: 1px solid transparent;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn-primary { background: var(--amber); color: var(--ink); }
+  .btn-primary:hover { background: #ffb83d; color: var(--ink); }
+  .btn-secondary { background: transparent; color: var(--paper); border-color: var(--paper); }
+  .btn-secondary:hover { background: var(--paper); color: var(--ink); }
+  .btn svg { width: 18px; height: 18px; }
+  .closer .cta-row { justify-content: center; }
+
+  /* ----- footer ----- */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--rule-light);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-links { display: flex; gap: 22px; }
+  footer a { color: var(--ink); }
+
+  /* ----- responsive ----- */
+  @media (max-width: 640px) {
+    .page-hero { padding: 52px 0 40px; }
+    .tutorials { padding: 56px 0; }
+    .tutorial-list { gap: 48px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="/">Free WordPress MCP<span class="dot">.</span></a>
+    <nav>
+      <a href="/#how">How it works</a>
+      <a href="/#setup">Setup</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/tutorials" aria-current="page">Tutorials</a>
+      <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">WebSensePro · YouTube</span>
+      <h1>Video Tutorials</h1>
+      <p class="lede">Step-by-step walkthroughs for installing the plugin, connecting your AI client, and getting real work done on your WordPress site.</p>
+    </div>
+  </section>
+
+  <section class="tutorials">
+    <div class="wrap">
+      <div class="tutorial-list">
+
+        <div class="tutorial-item">
+          <div>
+            <div class="tutorial-meta">
+              <span class="tutorial-num">01</span>
+            </div>
+            <h2 class="tutorial-title">How to Install the Free WordPress MCP Plugin</h2>
+            <p class="tutorial-desc">A complete setup walkthrough — download the plugin, upload it to WordPress, connect your AI client, and run your first prompt. No prior MCP knowledge assumed.</p>
+          </div>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/nHE6PcA5pfc?rel=0"
+              title="How to install the Free WordPress MCP plugin — full setup walkthrough"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+
+        <hr class="tutorial-divider">
+
+        <div class="tutorial-item">
+          <div>
+            <div class="tutorial-meta">
+              <span class="tutorial-num">02</span>
+            </div>
+            <h2 class="tutorial-title">WordPress MCP Plugin — Tutorial 2</h2>
+            <p class="tutorial-desc">The next step after installation — learn how to use the plugin to let your AI agent perform real actions on your WordPress site.</p>
+          </div>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/hxhjs3IUYQE?rel=0"
+              title="WordPress MCP Plugin tutorial 2"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="closer">
+  <div class="wrap">
+    <h2>More tutorials drop weekly.</h2>
+    <p>Subscribe on YouTube so you don't miss the next one.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://www.youtube.com/websensepro" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+        Subscribe on YouTube
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">Get the plugin on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>Built by <a href="https://www.youtube.com/websensepro" rel="noopener">WebSensePro</a> · MIT licensed</div>
+    <div class="footer-links">
+      <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">GitHub</a>
+      <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp/issues" rel="noopener">Issues</a>
+      <a href="https://www.youtube.com/websensepro" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
