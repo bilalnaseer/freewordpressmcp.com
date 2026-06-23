@@ -90,9 +90,26 @@
     color: var(--ink);
   }
   .brand .dot { color: var(--amber); }
-  .topbar nav { display: flex; gap: 24px; font-size: 15px; }
+  .topbar nav { display: flex; gap: 24px; font-size: 15px; align-items: center; }
   .topbar nav a { color: var(--ink); }
   .topbar nav a:hover { color: var(--blue); }
+
+  /* Dropdown */
+  .dropdown { position: relative; display: inline-block; }
+  .dropdown-content {
+    display: none; position: absolute; background-color: var(--paper);
+    min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 11; border: 1px solid var(--rule-light); border-radius: 4px;
+    top: 100%; left: 0; padding: 8px 0;
+  }
+  .dropdown-content a {
+    color: var(--ink); padding: 8px 16px; text-decoration: none; display: block; white-space: normal; line-height: 1.4;
+  }
+  .dropdown-content a:hover { background-color: var(--paper-dim); color: var(--blue); text-decoration: none; }
+  .dropdown:hover .dropdown-content { display: block; }
+  .dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 4px; }
+  .dropdown > a::after { content: "▼"; font-size: 10px; }
+
   @media (max-width: 640px) { .topbar nav { display: none; } }
 
   /* ----- hero ----- */
@@ -541,7 +558,13 @@
       <a href="#how">How it works</a>
       <a href="#setup">Setup</a>
       <a href="#faq">FAQ</a>
-      <a href="/tutorials">Tutorials</a>
+      <div class="dropdown">
+        <a href="/tutorials">Tutorials</a>
+        <div class="dropdown-content">
+          <a href="/free-connect-claude-ai-wordpress-mcp.html">Claude AI Tutorial</a>
+          <a href="/free-connect-codex-wordpress-mcp.html">Codex Tutorial</a>
+        </div>
+      </div>
       <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">GitHub</a>
     </nav>
   </div>
