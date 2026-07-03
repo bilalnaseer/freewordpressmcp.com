@@ -4,6 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Set theme before paint to avoid a flash of the wrong mode -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <title>Free WordPress MCP Plugin — Connect Any AI Agent to Your WordPress Site</title>
   <meta name="description"
     content="A free, open-source WordPress plugin that lets Claude, ChatGPT, and any MCP-compatible AI agent perform real actions on your WordPress site — improve SEO, write posts, update pages, manage content. Built by WebSensePro.">
@@ -56,6 +68,55 @@
       --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
 
+    /* ----- dark theme ----- */
+    :root[data-theme="dark"] {
+      --ink: #EAECF1;
+      --ink-2: #FFFFFF;
+      --paper: #0C1322;
+      --paper-dim: #141D2F;
+      --rule: #3A4A66;
+      --rule-light: #26324A;
+      --blue: #6FB2E8;
+      --blue-hover: #98C8F0;
+      --amber: #F5A524;
+      --muted: #9AA3B4;
+      --muted-ink: #8A93A6;
+    }
+
+    /* keep the dark "bands" dark in dark mode instead of inverting them */
+    :root[data-theme="dark"] .closer {
+      background: #060B15;
+      color: var(--ink);
+    }
+
+    :root[data-theme="dark"] .closer h2 {
+      color: var(--ink);
+    }
+
+    :root[data-theme="dark"] .closer p {
+      color: var(--muted);
+    }
+
+    :root[data-theme="dark"] .closer .btn-secondary {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    :root[data-theme="dark"] .closer .btn-secondary:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    :root[data-theme="dark"] .step-num {
+      background: var(--paper-dim);
+      color: var(--amber);
+      border: 1px solid var(--rule-light);
+    }
+
+    :root[data-theme="dark"] .video-frame {
+      background: #000;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -73,6 +134,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     a {
@@ -193,16 +255,208 @@
       font-size: 10px;
     }
 
+    /* right-side controls */
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* theme toggle */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--rule-light);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px;
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .theme-toggle .icon-sun {
+      display: none;
+    }
+
+    :root[data-theme="dark"] .theme-toggle .icon-moon {
+      display: none;
+    }
+
+    :root[data-theme="dark"] .theme-toggle .icon-sun {
+      display: inline;
+    }
+
+    /* hamburger toggle (mobile only) */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      padding: 9px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .nav-toggle-bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--ink);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-toggle:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
     @media (max-width: 640px) {
+      .nav-toggle {
+        display: flex;
+      }
+
       .topbar nav {
         display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--paper);
+        border-bottom: 1px solid var(--rule-light);
+        box-shadow: 0 14px 28px -14px rgba(11, 18, 32, 0.28);
+        padding: 8px 0;
+      }
+
+      .topbar nav.open {
+        display: flex;
+      }
+
+      .topbar nav>a {
+        padding: 12px 24px;
+      }
+
+      .dropdown {
+        display: block;
+      }
+
+      .dropdown>a {
+        padding: 12px 24px;
+      }
+
+      .dropdown>a::after {
+        content: "";
+      }
+
+      .dropdown-content {
+        display: block;
+        position: static;
+        min-width: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+      }
+
+      .dropdown-content a {
+        padding: 10px 24px 10px 40px;
       }
     }
 
     /* ----- hero ----- */
     .hero {
-      padding: 80px 0 60px;
+      padding: 96px 0 76px;
       border-bottom: 1px solid var(--rule-light);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* soft animated glow behind the hero */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -34%;
+      left: 50%;
+      width: 720px;
+      height: 720px;
+      max-width: 130%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(245, 165, 36, 0.20), rgba(245, 165, 36, 0) 62%);
+      z-index: 0;
+      pointer-events: none;
+      animation: heroGlow 9s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0) scale(1);
+        opacity: 0.85;
+      }
+      50% {
+        transform: translateX(-50%) translateY(22px) scale(1.08);
+        opacity: 1;
+      }
+    }
+
+    @keyframes heroRise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroShimmer {
+      to {
+        background-position: 200% center;
+      }
     }
 
     .eyebrow {
@@ -235,11 +489,26 @@
       max-width: 900px;
     }
 
+    .hero h1 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     h1 em {
       font-style: italic;
       font-weight: 400;
       color: var(--amber);
       font-feature-settings: "ss01";
+    }
+
+    .hero h1 em {
+      background: linear-gradient(100deg, var(--amber) 10%, #ffd07a 45%, var(--amber) 80%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: heroShimmer 4.5s linear infinite;
     }
 
     .lede {
@@ -250,10 +519,51 @@
       margin: 0 0 36px;
     }
 
+    .hero .lede {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .cta-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+    }
+
+    .hero .cta-row {
+      justify-content: center;
+    }
+
+    /* staggered entrance — only when motion is welcome */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero .eyebrow,
+      .hero h1,
+      .hero .lede,
+      .hero .cta-row,
+      .hero .price-stamp {
+        opacity: 0;
+        animation: heroRise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      }
+
+      .hero .eyebrow {
+        animation-delay: 0.05s;
+      }
+
+      .hero h1 {
+        animation-delay: 0.16s;
+      }
+
+      .hero .lede {
+        animation-delay: 0.30s;
+      }
+
+      .hero .cta-row {
+        animation-delay: 0.44s;
+      }
+
+      .hero .price-stamp {
+        animation-delay: 0.56s;
+      }
     }
 
     .btn {
@@ -454,6 +764,131 @@
       font-size: 13px;
       color: var(--muted);
       text-align: center;
+    }
+
+    /* ----- video slider ----- */
+    .video-slider {
+      position: relative;
+    }
+
+    .video-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .video-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .video-track {
+        transition: none;
+      }
+    }
+
+    .video-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+
+    .video-slide .video-frame {
+      box-shadow: none;
+      border-radius: 12px;
+    }
+
+    .slide-label {
+      margin: 16px 0 0;
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: center;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 8px 24px -8px rgba(11, 18, 32, 0.35);
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .slider-btn:hover {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .slider-btn:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 3px;
+    }
+
+    .slider-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .slider-btn.prev {
+      left: -23px;
+    }
+
+    .slider-btn.next {
+      right: -23px;
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      background: var(--rule-light);
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .slider-dot:hover {
+      background: var(--muted);
+    }
+
+    .slider-dot[aria-current="true"] {
+      background: var(--amber);
+      transform: scale(1.25);
+    }
+
+    .slider-dot:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 720px) {
+      .slider-btn.prev {
+        left: 8px;
+      }
+
+      .slider-btn.next {
+        right: 8px;
+      }
     }
 
     /* ----- why-mine ----- */
@@ -853,21 +1288,47 @@
   <header class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="/">Free WordPress MCP<span class="dot">.</span></a>
-      <nav>
-        <a href="#how">How it works</a>
-        <a href="#setup">Setup</a>
-        <a href="#faq">FAQ</a>
-        <div class="dropdown">
-          <a href="/tutorials">Tutorials</a>
-          <div class="dropdown-content">
-            <a href="/free-connect-claude-ai-wordpress-mcp.html">Claude AI Tutorial</a>
-            <a href="/free-connect-codex-wordpress-mcp.html">Codex Tutorial</a>
-            <a href="/free-connect-antigravity-wordpress-mcp.html">Antigravity 2.0 Tutorial</a>
-            <a href="/free-connect-cursor-ai-wordpress-mcp.html">Cursor AI Tutorial</a>
+      <div class="topbar-right">
+        <nav id="site-nav" data-nav>
+          <a href="#how">How it works</a>
+          <a href="#setup">Setup</a>
+          <a href="#faq">FAQ</a>
+          <div class="dropdown">
+            <a href="/tutorials">Tutorials</a>
+            <div class="dropdown-content">
+              <a href="/free-connect-claude-ai-wordpress-mcp.html">Claude AI Tutorial</a>
+              <a href="/free-connect-codex-wordpress-mcp.html">Codex Tutorial</a>
+              <a href="/free-connect-antigravity-wordpress-mcp.html">Antigravity 2.0 Tutorial</a>
+              <a href="/free-connect-cursor-ai-wordpress-mcp.html">Cursor AI Tutorial</a>
+            </div>
           </div>
-        </div>
-        <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">GitHub</a>
-      </nav>
+          <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">GitHub</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"
+          aria-controls="site-nav" data-nav-toggle>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -981,11 +1442,67 @@
           <p class="section-lede">A walkthrough of installing the plugin, connecting an AI client, and running your
             first command — no prior MCP knowledge assumed.</p>
         </div>
-        <div class="video-frame">
-          <iframe src="https://www.youtube-nocookie.com/embed/nHE6PcA5pfc?rel=0"
-            title="How to install the Free WordPress MCP plugin — full setup walkthrough" loading="lazy"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="video-slider" data-video-slider>
+          <div class="video-viewport">
+            <div class="video-track" data-track>
+
+              <div class="video-slide">
+                <div class="video-frame">
+                  <iframe data-src="https://www.youtube-nocookie.com/embed/nHE6PcA5pfc?rel=0"
+                    title="How To Connect Claude AI to WordPress via MCP (Step-by-step)" loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <p class="slide-label">Connect Claude AI to WordPress</p>
+              </div>
+
+              <div class="video-slide">
+                <div class="video-frame">
+                  <iframe data-src="https://www.youtube-nocookie.com/embed/hxhjs3IUYQE?rel=0"
+                    title="How To Connect Codex to WordPress via MCP (Step-by-step)" loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <p class="slide-label">Connect Codex to WordPress</p>
+              </div>
+
+              <div class="video-slide">
+                <div class="video-frame">
+                  <iframe data-src="https://www.youtube.com/embed/2gRIRcqqOpo?rel=0"
+                    title="How To Connect Google Antigravity 2.0 to WordPress via MCP (Step-by-step)" loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <p class="slide-label">Connect Google Antigravity 2.0 to WordPress</p>
+              </div>
+
+              <div class="video-slide">
+                <div class="video-frame">
+                  <iframe data-src="https://www.youtube.com/embed/1hGSUAdRxiU?rel=0"
+                    title="How To Connect Cursor AI to WordPress via MCP (Step-by-step)" loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <p class="slide-label">Connect Cursor AI to WordPress</p>
+              </div>
+
+            </div>
+          </div>
+
+          <button class="slider-btn prev" type="button" data-prev aria-label="Previous video">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="slider-btn next" type="button" data-next aria-label="Next video">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="slider-dots" data-dots role="tablist" aria-label="Choose a tutorial video"></div>
         </div>
         <p class="video-caption">More tutorials drop weekly on <a href="https://www.youtube.com/websensepro"
             rel="noopener">youtube.com/websensepro</a></p>
@@ -1146,6 +1663,106 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Light / dark theme toggle
+    (function () {
+      var root = document.documentElement;
+      var btn = document.querySelector('[data-theme-toggle]');
+      if (!btn) return;
+
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    })();
+
+    // Mobile navigation toggle
+    (function () {
+      var toggle = document.querySelector('[data-nav-toggle]');
+      var nav = document.querySelector('[data-nav]');
+      if (!toggle || !nav) return;
+
+      function closeNav() {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      // Close the menu after tapping a link.
+      nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) closeNav();
+      });
+
+      // Reset state when resizing back up to desktop.
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 640) closeNav();
+      });
+    })();
+
+    // Video slider
+    (function () {
+      var slider = document.querySelector('[data-video-slider]');
+      if (!slider) return;
+
+      var track = slider.querySelector('[data-track]');
+      var slides = Array.prototype.slice.call(track.children);
+      var dotsWrap = slider.querySelector('[data-dots]');
+      var prevBtn = slider.querySelector('[data-prev]');
+      var nextBtn = slider.querySelector('[data-next]');
+      var index = 0;
+
+      // Load the iframe for a slide (and its immediate neighbours) on demand.
+      function load(i) {
+        var slide = slides[i];
+        if (!slide) return;
+        var frame = slide.querySelector('iframe');
+        if (frame && frame.dataset.src) {
+          frame.src = frame.dataset.src;
+          delete frame.dataset.src;
+        }
+      }
+
+      var dots = slides.map(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'slider-dot';
+        dot.type = 'button';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Video ' + (i + 1) + ' of ' + slides.length);
+        dot.addEventListener('click', function () { go(i); });
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+
+      function go(i) {
+        index = (i + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach(function (dot, di) {
+          dot.setAttribute('aria-current', di === index ? 'true' : 'false');
+        });
+        // Load current plus neighbours so the next swipe is instant.
+        load(index);
+        load(index + 1);
+        load(index - 1 < 0 ? slides.length - 1 : index - 1);
+      }
+
+      prevBtn.addEventListener('click', function () { go(index - 1); });
+      nextBtn.addEventListener('click', function () { go(index + 1); });
+
+      // Keyboard arrows when the slider has focus.
+      slider.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { go(index - 1); }
+        else if (e.key === 'ArrowRight') { go(index + 1); }
+      });
+
+      go(0);
+    })();
+  </script>
 
 </body>
 
