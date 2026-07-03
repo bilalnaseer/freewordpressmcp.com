@@ -22,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated dropdown navigation across all pages to include the Antigravity tutorial link.
 
 
+### Added
+- Created SEO-optimized landing page for Cursor AI tutorial (`/free-connect-cursor-ai-wordpress-mcp.html`).
+- Added VideoSchema, FAQSchema, and step-by-step setup guide for Cursor AI and WordPress MCP integration.
+- Updated dropdown navigation across all pages to include the Cursor AI tutorial link.
+
+
 
 ## [1.0.0] - 2026-06-23
 
