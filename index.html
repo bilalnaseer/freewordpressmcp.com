@@ -204,6 +204,13 @@
       color: var(--blue);
     }
 
+    .nav-icon {
+      width: 16px;
+      height: 16px;
+      vertical-align: -3px;
+      margin-right: 6px;
+    }
+
     /* Dropdown */
     .dropdown {
       position: relative;
@@ -492,6 +499,89 @@
     .hero h1 {
       margin-left: auto;
       margin-right: auto;
+    }
+
+    /* ----- SVG headline: red light traces each letter's outline ----- */
+    .hero-svg {
+      display: block;
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      margin: 0 auto;
+      overflow: visible;
+    }
+
+    .hero-svg text {
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-svg .fill-text {
+      fill: var(--ink);
+    }
+
+    .hero-svg .em {
+      fill: var(--amber);
+      font-style: italic;
+      font-weight: 400;
+      font-feature-settings: "ss01";
+    }
+
+    /* the trace layer must stay fill-less everywhere (incl. WordPress),
+       otherwise the amber fill casts a permanent red halo via the glow filter */
+    .hero-svg .trace-text .em {
+      fill: none;
+    }
+
+    /* trace layer: no fill; a red bead traces one letter's outline at a time */
+    .hero-svg .trace-text {
+      fill: none;
+      stroke: #ff1a1a;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 1px #fff)
+        drop-shadow(0 0 3px #ff1a1a)
+        drop-shadow(0 0 6px rgba(255, 26, 26, 0.6));
+    }
+
+    /* 42 letters, ~0.16s each → ~6.7s for the light to sweep the whole headline */
+    .hero-svg .trace-text .ltr {
+      stroke-dasharray: 40 8400;
+      stroke-dashoffset: 0;
+      opacity: 0;
+      animation: traceLetter 120s linear infinite;
+      animation-delay: calc(var(--i) * 1s);
+    }
+
+    @keyframes traceLetter {
+      0% {
+        opacity: 1;
+        stroke-dashoffset: 4;
+      }
+      /* one letter is "active" for ~1/42 of the cycle, tracing its outline */
+      2.38% {
+        opacity: 1;
+        stroke-dashoffset: -300;
+      }
+      2.39%,
+      100% {
+        opacity: 0;
+        stroke-dashoffset: -300;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-svg .trace-text {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-svg .trace-text {
+        display: none;
+      }
     }
 
     h1 em {
@@ -1302,7 +1392,18 @@
               <a href="/free-connect-cursor-ai-wordpress-mcp.html">Cursor AI Tutorial</a>
             </div>
           </div>
-          <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">GitHub</a>
+          <a href="https://github.com/bilalnaseer/wsp-wordpress-mcp" rel="noopener">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.69-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.74.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56C20.21 21.39 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://wordpress.org/plugins/wsp-mcp-ai-agents-connector/" rel="noopener" target="_blank">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zM3.01 12c0-1.3.28-2.53.78-3.65l4.29 11.76C4.98 18.68 3.01 15.57 3.01 12zM12 20.99c-.88 0-1.73-.13-2.54-.37l2.7-7.84 2.76 7.57c.02.04.04.09.06.12-.93.33-1.93.52-2.98.52zm1.24-13.21c.54-.03 1.03-.09 1.03-.09.48-.06.43-.77-.06-.74 0 0-1.46.11-2.4.11-.88 0-2.37-.11-2.37-.11-.48-.02-.54.72-.05.74 0 0 .46.06.94.09l1.4 3.84-1.97 5.9-3.27-9.74c.54-.02 1.03-.08 1.03-.08.48-.06.43-.77-.06-.74 0 0-1.46.11-2.4.11-.17 0-.37 0-.58-.01C6.1 4.62 8.86 3.01 12 3.01c2.34 0 4.47.89 6.07 2.36-.04 0-.08-.01-.12-.01-.88 0-1.51.77-1.51 1.6 0 .74.43 1.37.88 2.11.34.6.74 1.37.74 2.48 0 .77-.3 1.66-.68 2.91l-.9 3-3.24-9.68zm6.65 3.11c.51.94.81 2.01.81 3.16 0 2.42-1.31 4.53-3.26 5.67l2.72-7.86c.51-1.27.68-2.29.68-3.19 0-.33-.02-.63-.06-.92.71 1.29 1.11 2.78 1.11 4.36-.01-.42-.01-.83-.75-1.18z" />
+            </svg>
+            Download Plugin
+          </a>
         </nav>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1338,7 +1439,21 @@
     <section class="hero">
       <div class="wrap">
         <span class="eyebrow">Free &amp; open source · WordPress plugin</span>
-        <h1>Connect any AI agent to your <em>WordPress</em> site — free.</h1>
+        <h1 id="heroTitle">
+          <svg class="hero-svg" viewBox="0 0 860 200" role="img"
+            aria-label="Connect any AI agent to your WordPress site — free." focusable="false">
+            <!-- readable, filled headline -->
+            <g class="fill-text" text-anchor="middle" font-size="66">
+              <text x="430" y="78">Connect any AI agent to your</text>
+              <text x="430" y="158"><tspan class="em">WordPress</tspan> site — free.</text>
+            </g>
+            <!-- per-letter outline; a red glow bead traces each letter in turn -->
+            <g class="trace-text" text-anchor="middle" font-size="66">
+              <text x="430" y="78"><tspan class="ltr" style="--i:0">C</tspan><tspan class="ltr" style="--i:1">o</tspan><tspan class="ltr" style="--i:2">n</tspan><tspan class="ltr" style="--i:3">n</tspan><tspan class="ltr" style="--i:4">e</tspan><tspan class="ltr" style="--i:5">c</tspan><tspan class="ltr" style="--i:6">t</tspan> <tspan class="ltr" style="--i:7">a</tspan><tspan class="ltr" style="--i:8">n</tspan><tspan class="ltr" style="--i:9">y</tspan> <tspan class="ltr" style="--i:10">A</tspan><tspan class="ltr" style="--i:11">I</tspan> <tspan class="ltr" style="--i:12">a</tspan><tspan class="ltr" style="--i:13">g</tspan><tspan class="ltr" style="--i:14">e</tspan><tspan class="ltr" style="--i:15">n</tspan><tspan class="ltr" style="--i:16">t</tspan> <tspan class="ltr" style="--i:17">t</tspan><tspan class="ltr" style="--i:18">o</tspan> <tspan class="ltr" style="--i:19">y</tspan><tspan class="ltr" style="--i:20">o</tspan><tspan class="ltr" style="--i:21">u</tspan><tspan class="ltr" style="--i:22">r</tspan></text>
+              <text x="430" y="158"><tspan class="ltr em" style="--i:23">W</tspan><tspan class="ltr em" style="--i:24">o</tspan><tspan class="ltr em" style="--i:25">r</tspan><tspan class="ltr em" style="--i:26">d</tspan><tspan class="ltr em" style="--i:27">P</tspan><tspan class="ltr em" style="--i:28">r</tspan><tspan class="ltr em" style="--i:29">e</tspan><tspan class="ltr em" style="--i:30">s</tspan><tspan class="ltr em" style="--i:31">s</tspan> <tspan class="ltr" style="--i:32">s</tspan><tspan class="ltr" style="--i:33">i</tspan><tspan class="ltr" style="--i:34">t</tspan><tspan class="ltr" style="--i:35">e</tspan> <tspan class="ltr" style="--i:36">—</tspan> <tspan class="ltr" style="--i:37">f</tspan><tspan class="ltr" style="--i:38">r</tspan><tspan class="ltr" style="--i:39">e</tspan><tspan class="ltr" style="--i:40">e</tspan><tspan class="ltr" style="--i:41">.</tspan></text>
+            </g>
+          </svg>
+        </h1>
         <p class="lede">Ask Claude, ChatGPT, or any MCP-compatible AI to improve your SEO, write posts, update pages, or
           manage your site — and watch it happen, live, on your WordPress dashboard.</p>
         <div class="cta-row">
@@ -1348,6 +1463,12 @@
                 d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.1c-3.2.69-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.74.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56C20.21 21.39 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z" />
             </svg>
             Get the plugin on GitHub
+          </a>
+          <a class="btn btn-primary" href="https://wordpress.org/plugins/wsp-mcp-ai-agents-connector/" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zM3.01 12c0-1.3.28-2.53.78-3.65l4.29 11.76C4.98 18.68 3.01 15.57 3.01 12zM12 20.99c-.88 0-1.73-.13-2.54-.37l2.7-7.84 2.76 7.57c.02.04.04.09.06.12-.93.33-1.93.52-2.98.52zm1.24-13.21c.54-.03 1.03-.09 1.03-.09.48-.06.43-.77-.06-.74 0 0-1.46.11-2.4.11-.88 0-2.37-.11-2.37-.11-.48-.02-.54.72-.05.74 0 0 .46.06.94.09l1.4 3.84-1.97 5.9-3.27-9.74c.54-.02 1.03-.08 1.03-.08.48-.06.43-.77-.06-.74 0 0-1.46.11-2.4.11-.17 0-.37 0-.58-.01C6.1 4.62 8.86 3.01 12 3.01c2.34 0 4.47.89 6.07 2.36-.04 0-.08-.01-.12-.01-.88 0-1.51.77-1.51 1.6 0 .74.43 1.37.88 2.11.34.6.74 1.37.74 2.48 0 .77-.3 1.66-.68 2.91l-.9 3-3.24-9.68zm6.65 3.11c.51.94.81 2.01.81 3.16 0 2.42-1.31 4.53-3.26 5.67l2.72-7.86c.51-1.27.68-2.29.68-3.19 0-.33-.02-.63-.06-.92.71 1.29 1.11 2.78 1.11 4.36-.01-.42-.01-.83-.75-1.18z" />
+            </svg>
+            Download from WordPress.org
           </a>
           <a class="btn btn-secondary" href="#video">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
