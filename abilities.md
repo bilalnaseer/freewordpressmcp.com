@@ -8,7 +8,9 @@ The list mirrors the plugin registry at
 `wsp-mcp-ai-agents-connector/includes/registry.php` in
 [bilalnaseer/wsp-wordpress-mcp](https://github.com/bilalnaseer/wsp-wordpress-mcp).
 
-**When this file changes, update the `ABILITIES` array in `abilities-directory.html` to match** (and bump the `lastmod` date for that page in `sitemap.xml`).
+> **Generated file — do not edit by hand.** Produced by `bin/generate-abilities-md.php`; CI regenerates it whenever `registry.php` changes.
+
+**When this file changes, `abilities-directory.html` and `sitemap.xml` are updated automatically by the sync workflow.**
 
 ## Legend
 
@@ -18,9 +20,9 @@ The list mirrors the plugin registry at
 
 ## Totals
 
-- **73** total abilities
-- **20** core (always available)
-- **34** read · **39** write
+- **70** total abilities
+- **26** core (always available)
+- **31** read · **39** write
 
 ---
 
@@ -65,7 +67,13 @@ The list mirrors the plugin registry at
 
 | Ability ID | Name | Description | Access | Default |
 |---|---|---|---|---|
-| `wsp/get-media` | Read Media | List media library items (title, URL, MIME type, date). | read | off |
+| `wsp/list-media` | List Media | Browse and search the media library by type, keyword, or date. | read | off |
+| `wsp/get-media` | Get Media | Retrieve the full metadata of a specific media file by ID. | read | off |
+| `wsp/count-media` | Count Media | Get media library counts grouped by MIME type, plus a total. | read | off |
+| `wsp/update-media` | Update Media | Update the title, alt text, caption, or description of a media file by ID. | write | off |
+| `wsp/delete-media` | Delete Media | Permanently delete a media file from the media library by ID. | write | off |
+| `wsp/upload-media` | Upload Media | Upload an image or file from a URL directly into the media library. | write | off |
+| `wsp/upload-media-from-url` | Upload Media From URL | Pull an image from any web link straight into your media library. | write | off |
 
 ### Users
 
@@ -116,22 +124,6 @@ The list mirrors the plugin registry at
 | `wsp/woo-report-sales` | Get Sales Report | Get sales, orders, net revenue, and average order value reports. | read | off |
 | `wsp/woo-get-low-stock` | Get Low Stock Alerts | Inspect and list products running low on stock. | read | off |
 | `wsp/woo-moderate-review` | Moderate Product Reviews | Approve, spam, trash, or reply to product reviews. | write | off |
-
----
-
-## Elementor — requires the Elementor plugin
-
-| Ability ID | Name | Description | Access | Default |
-|---|---|---|---|---|
-| `wsp/elementor-list-pages` | List Elementor Pages | List pages/posts built with Elementor (title, ID, URL, status). | read | off |
-| `wsp/elementor-get-page` | Get Page Structure | Get the element tree of an Elementor page by post ID. | read | off |
-| `wsp/elementor-get-element` | Get Element Settings | Get all settings for a specific element by post ID and element ID. | read | off |
-| `wsp/elementor-find-element` | Find Element | Find elements on a page by widget type or settings content search. | read | off |
-| `wsp/elementor-list-templates` | List Templates | List Elementor saved templates from the library. | read | off |
-| `wsp/elementor-update-element` | Update Element | Update settings for a widget or container by element ID. | write | off |
-| `wsp/elementor-add-widget` | Add Widget | Add a widget to a container or column on an Elementor page. | write | off |
-| `wsp/elementor-add-container` | Add Container | Add a layout container or section to an Elementor page. | write | off |
-| `wsp/elementor-remove-element` | Remove Element | Remove a widget or container from an Elementor page by element ID. | write | off |
 
 ---
 
