@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- **Abilities Directory** page (`abilities-directory.html`, served at `/abilities-directory`): a searchable, category-filterable directory of all **73** plugin abilities (MCP tools), with read/write badges, "on by default" markers, and "requires <plugin>" tags for the Yoast SEO, WooCommerce, Elementor, and Advanced Custom Fields groups. Rendered client-side from a vanilla-JS `ABILITIES` array — no framework, self-contained.
+- `abilities.md` — source-of-truth list of every plugin ability, mirroring the plugin registry (`includes/registry.php`) in the wsp-wordpress-mcp repo.
+- "Abilities" navigation link added to the main nav on `index.html`, `tutorials.html`, and all four tutorial pages.
+- `/abilities-directory` added to `sitemap.xml` (priority 0.9).
+- Documented the abilities-sync workflow in `AGENTS.MD`: whenever `abilities.md` changes, the `ABILITIES` array in `abilities-directory.html` must be updated to match.
+
 ### Changed
 - Updated all four tutorial pages (Claude AI, Codex, Antigravity 2.0, Cursor AI) to reflect the new **single-plugin** setup: one `wsp-mcp-ai-agents-connector.zip` download (WSP MCP – AI Agents Connector, v2.3.0) with the MCP Adapter now bundled in, replacing the old two-plugin flow.
 - Removed the manual "Generate a WordPress Application Password" step from all tutorials — the copied config snippet now includes the connection credentials. Renumbered the remaining setup steps accordingly.
