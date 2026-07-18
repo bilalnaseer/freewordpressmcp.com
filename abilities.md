@@ -20,9 +20,9 @@ The list mirrors the plugin registry at
 
 ## Totals
 
-- **126** total abilities
-- **26** core (always available)
-- **54** read · **72** write
+- **127** total abilities
+- **27** core (always available)
+- **54** read · **73** write
 
 ---
 
@@ -74,6 +74,7 @@ The list mirrors the plugin registry at
 | `wsp/delete-media` | Delete Media | Permanently delete a media file from the media library by ID. | write | off |
 | `wsp/upload-media` | Upload Media | Upload an image or file from a URL directly into the media library. | write | off |
 | `wsp/upload-media-from-url` | Upload Media From URL | Pull an image from any web link straight into your media library. | write | off |
+| `wsp/set-featured-image` | Set Featured Image | Set an image as the featured image (thumbnail) for a post or page. | write | off |
 
 ### Users
 

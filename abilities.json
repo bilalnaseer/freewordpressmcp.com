@@ -1,9 +1,9 @@
 {
     "totals": {
-        "total": 126,
-        "core": 26,
+        "total": 127,
+        "core": 27,
         "read": 54,
-        "write": 72
+        "write": 73
     },
     "abilities": [
         {
@@ -199,6 +199,15 @@
             "id": "wsp/upload-media-from-url",
             "name": "Upload Media From URL",
             "description": "Pull an image from any web link straight into your media library.",
+            "group": "Media",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/set-featured-image",
+            "name": "Set Featured Image",
+            "description": "Set an image as the featured image (thumbnail) for a post or page.",
             "group": "Media",
             "access": "write",
             "default": "off",
