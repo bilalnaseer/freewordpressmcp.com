@@ -1167,7 +1167,25 @@
       { id: 'wsp/uae-pages-update-status', name: 'Update Page Status', desc: 'Publishes/unpublishes page.', group: 'Ultimate Addons Elementor', access: 'write', def: false },
       { id: 'wsp/uae-settings-update', name: 'Update Plugin Setting', desc: 'Updates plugin setting.', group: 'Ultimate Addons Elementor', access: 'write', def: false },
       { id: 'wsp/uae-templates-update', name: 'Update Template', desc: 'Updates template type/status.', group: 'Ultimate Addons Elementor', access: 'write', def: false },
-      { id: 'wsp/uae-builder-update-widget', name: 'Update Widget Settings', desc: 'Updates widget keys.', group: 'Ultimate Addons Elementor', access: 'write', def: false }
+      { id: 'wsp/uae-builder-update-widget', name: 'Update Widget Settings', desc: 'Updates widget keys.', group: 'Ultimate Addons Elementor', access: 'write', def: false },
+      { id: 'wsp/gravity-list-forms', name: 'List Forms', desc: 'Lists all Gravity Forms (ID, title, date, active status, entry count).', group: 'Gravity Forms', access: 'read', def: true },
+      { id: 'wsp/gravity-get-form', name: 'Get Form', desc: 'Retrieves full JSON structure of a form (fields, labels, types, choices, rules).', group: 'Gravity Forms', access: 'read', def: true },
+      { id: 'wsp/gravity-create-form', name: 'Create Form', desc: 'Creates a new form structure with title and optional fields.', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-update-form', name: 'Update Form', desc: 'Updates form properties, fields, or active status.', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-delete-form', name: 'Delete Form', desc: 'Deletes or trashes a form.', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-list-entries', name: 'List Entries', desc: 'Lists submissions/leads for a specific form (paginated).', group: 'Gravity Forms', access: 'read', def: false },
+      { id: 'wsp/gravity-get-entry', name: 'Get Entry', desc: 'Retrieves complete submission details by entry ID.', group: 'Gravity Forms', access: 'read', def: false },
+      { id: 'wsp/gravity-update-entry', name: 'Update Entry', desc: 'Updates field values or status (read/unread/starred) inside an entry.', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-delete-entry', name: 'Delete Entry', desc: 'Trashes or permanently deletes an entry.', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-get-notifications', name: 'Get Notifications', desc: 'Gets notification settings (emails, feeds) for a form.', group: 'Gravity Forms', access: 'read', def: false },
+      { id: 'wsp/gravity-get-confirmations', name: 'Get Confirmations', desc: 'Gets confirmation settings (thank-you messages, redirects) for a form.', group: 'Gravity Forms', access: 'read', def: false },
+      { id: 'wsp/gravity-create-notification', name: 'Create Notification', desc: 'Creates a new email notification (to, subject, message, from, etc.).', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-update-notification', name: 'Update Notification', desc: 'Updates an existing notification (to, subject, message, active status, etc.).', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-delete-notification', name: 'Delete Notification', desc: 'Deletes a notification from a form.', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-create-confirmation', name: 'Create Confirmation', desc: 'Creates a confirmation (thank-you message, redirect, or page).', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-update-confirmation', name: 'Update Confirmation', desc: 'Updates an existing confirmation (message, redirect URL, default status, etc.).', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-delete-confirmation', name: 'Delete Confirmation', desc: 'Deletes a confirmation from a form.', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/gravity-update-form-settings', name: 'Update Form Settings', desc: 'Updates form-level settings (label placement, restrictions, scheduling, honeypot, etc.).', group: 'Gravity Forms', access: 'write', def: false }
     ];
 
     // ----- rendering -----

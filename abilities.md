@@ -20,9 +20,9 @@ The list mirrors the plugin registry at
 
 ## Totals
 
-- **127** total abilities
+- **145** total abilities
 - **27** core (always available)
-- **54** read · **73** write
+- **60** read · **85** write
 
 ---
 

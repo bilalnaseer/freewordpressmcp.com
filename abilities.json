@@ -1,9 +1,9 @@
 {
     "totals": {
-        "total": 127,
+        "total": 145,
         "core": 27,
-        "read": 54,
-        "write": 73
+        "read": 60,
+        "write": 85
     },
     "abilities": [
         {
@@ -1148,6 +1148,168 @@
             "access": "write",
             "default": "off",
             "requires": "Ultimate Addons Elementor"
+        },
+        {
+            "id": "wsp/gravity-list-forms",
+            "name": "List Forms",
+            "description": "Lists all Gravity Forms (ID, title, date, active status, entry count).",
+            "group": "Gravity Forms",
+            "access": "read",
+            "default": "on",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-get-form",
+            "name": "Get Form",
+            "description": "Retrieves full JSON structure of a form (fields, labels, types, choices, rules).",
+            "group": "Gravity Forms",
+            "access": "read",
+            "default": "on",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-create-form",
+            "name": "Create Form",
+            "description": "Creates a new form structure with title and optional fields.",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-update-form",
+            "name": "Update Form",
+            "description": "Updates form properties, fields, or active status.",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-delete-form",
+            "name": "Delete Form",
+            "description": "Deletes or trashes a form.",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-list-entries",
+            "name": "List Entries",
+            "description": "Lists submissions/leads for a specific form (paginated).",
+            "group": "Gravity Forms",
+            "access": "read",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-get-entry",
+            "name": "Get Entry",
+            "description": "Retrieves complete submission details by entry ID.",
+            "group": "Gravity Forms",
+            "access": "read",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-update-entry",
+            "name": "Update Entry",
+            "description": "Updates field values or status (read/unread/starred) inside an entry.",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-delete-entry",
+            "name": "Delete Entry",
+            "description": "Trashes or permanently deletes an entry.",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-get-notifications",
+            "name": "Get Notifications",
+            "description": "Gets notification settings (emails, feeds) for a form.",
+            "group": "Gravity Forms",
+            "access": "read",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-get-confirmations",
+            "name": "Get Confirmations",
+            "description": "Gets confirmation settings (thank-you messages, redirects) for a form.",
+            "group": "Gravity Forms",
+            "access": "read",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-create-notification",
+            "name": "Create Notification",
+            "description": "Creates a new email notification (to, subject, message, from, etc.).",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-update-notification",
+            "name": "Update Notification",
+            "description": "Updates an existing notification (to, subject, message, active status, etc.).",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-delete-notification",
+            "name": "Delete Notification",
+            "description": "Deletes a notification from a form.",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-create-confirmation",
+            "name": "Create Confirmation",
+            "description": "Creates a confirmation (thank-you message, redirect, or page).",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-update-confirmation",
+            "name": "Update Confirmation",
+            "description": "Updates an existing confirmation (message, redirect URL, default status, etc.).",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-delete-confirmation",
+            "name": "Delete Confirmation",
+            "description": "Deletes a confirmation from a form.",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
+        },
+        {
+            "id": "wsp/gravity-update-form-settings",
+            "name": "Update Form Settings",
+            "description": "Updates form-level settings (label placement, restrictions, scheduling, honeypot, etc.).",
+            "group": "Gravity Forms",
+            "access": "write",
+            "default": "off",
+            "requires": null
         }
     ]
 }
