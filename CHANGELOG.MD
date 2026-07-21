@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Added the missing **Gravity Forms** group (18 abilities) to `abilities.md`, bringing its body in sync with its `145` totals header and with `abilities-directory.html` (which already listed the group). The section documents form, entry, notification, and confirmation tools (6 read · 12 write).
+- Rewrote `README.md` with a full **Tools / Abilities** section documenting all **145** MCP tools the plugin exposes: a summary table (145 total · 60 read · 85 write · 27 core · 7 plugin integrations), a per-group "at a glance" table with read/write splits, and collapsible `<details>` listings of every tool per group (Posts, Pages, Taxonomy, Comments, Media, Users, Search, Site, Yoast SEO, Rank Math SEO, WooCommerce, Elementor, Ultimate Addons for Elementor, Gravity Forms, ACF). Counts derived from `abilities-directory.html`.
 - Brand icon `assets/free-wordpress-mcp-icon-dark.svg` now used as the **favicon** and the **nav logo** (shown before the "Free WordPress MCP" wordmark) across all pages, replacing the inline data-URI "W" favicon.
 - **Abilities Directory** page (`abilities-directory.html`, served at `/abilities-directory`): a searchable, category-filterable directory of all **73** plugin abilities (MCP tools), with read/write badges, "on by default" markers, and "requires <plugin>" tags for the Yoast SEO, WooCommerce, Elementor, and Advanced Custom Fields groups. Rendered client-side from a vanilla-JS `ABILITIES` array — no framework, self-contained.
 - `abilities.md` — source-of-truth list of every plugin ability, mirroring the plugin registry (`includes/registry.php`) in the wsp-wordpress-mcp repo.

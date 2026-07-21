@@ -236,3 +236,28 @@ The list mirrors the plugin registry at
 | `wsp/acf-create-options-page` | Create Options Page | Programmatically register global ACF Options Page. | write | off |
 | `wsp/acf-get-option-value` | Get Option Value | Read global option value metadata. | read | off |
 | `wsp/acf-update-option-value` | Update Option Value | Write option values globally. | write | off |
+
+---
+
+## Gravity Forms — requires the Gravity Forms plugin
+
+| Ability ID | Name | Description | Access | Default |
+|---|---|---|---|---|
+| `wsp/gravity-list-forms` | List Forms | Lists all Gravity Forms (ID, title, date, active status, entry count). | read | off |
+| `wsp/gravity-get-form` | Get Form | Retrieves full JSON structure of a form (fields, labels, types, choices, rules). | read | off |
+| `wsp/gravity-create-form` | Create Form | Creates a new form structure with title and optional fields. | write | off |
+| `wsp/gravity-update-form` | Update Form | Updates form properties, fields, or active status. | write | off |
+| `wsp/gravity-delete-form` | Delete Form | Deletes or trashes a form. | write | off |
+| `wsp/gravity-list-entries` | List Entries | Lists submissions/leads for a specific form (paginated). | read | off |
+| `wsp/gravity-get-entry` | Get Entry | Retrieves complete submission details by entry ID. | read | off |
+| `wsp/gravity-update-entry` | Update Entry | Updates field values or status (read/unread/starred) inside an entry. | write | off |
+| `wsp/gravity-delete-entry` | Delete Entry | Trashes or permanently deletes an entry. | write | off |
+| `wsp/gravity-get-notifications` | Get Notifications | Gets notification settings (emails, feeds) for a form. | read | off |
+| `wsp/gravity-get-confirmations` | Get Confirmations | Gets confirmation settings (thank-you messages, redirects) for a form. | read | off |
+| `wsp/gravity-create-notification` | Create Notification | Creates a new email notification (to, subject, message, from, etc.). | write | off |
+| `wsp/gravity-update-notification` | Update Notification | Updates an existing notification (to, subject, message, active status, etc.). | write | off |
+| `wsp/gravity-delete-notification` | Delete Notification | Deletes a notification from a form. | write | off |
+| `wsp/gravity-create-confirmation` | Create Confirmation | Creates a confirmation (thank-you message, redirect, or page). | write | off |
+| `wsp/gravity-update-confirmation` | Update Confirmation | Updates an existing confirmation (message, redirect URL, default status, etc.). | write | off |
+| `wsp/gravity-delete-confirmation` | Delete Confirmation | Deletes a confirmation from a form. | write | off |
+| `wsp/gravity-update-form-settings` | Update Form Settings | Updates form-level settings (label placement, restrictions, scheduling, honeypot, etc.). | write | off |
