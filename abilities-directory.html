@@ -1036,8 +1036,8 @@
       'Rank Math SEO': { core: false, requires: 'Rank Math SEO' },
       'WooCommerce': { core: false, requires: 'WooCommerce' },
       'Elementor': { core: false, requires: 'Elementor' },
-      'Ultimate Addons Elementor': { core: false, requires: 'Ultimate Addons Elementor' },
       'Advanced Custom Fields': { core: false, requires: 'Advanced Custom Fields' },
+      'Ultimate Addons Elementor': { core: false, requires: 'Ultimate Addons Elementor' },
       'Gravity Forms': { core: false, requires: 'Gravity Forms' }
     };
 
@@ -1097,6 +1097,17 @@
       { id: 'wsp/elementor-add-widget', name: 'Add Widget', desc: 'Add a widget to a container or column on an Elementor page.', group: 'Elementor', access: 'write', def: false },
       { id: 'wsp/elementor-add-container', name: 'Add Container', desc: 'Add a layout container or section to an Elementor page.', group: 'Elementor', access: 'write', def: false },
       { id: 'wsp/elementor-remove-element', name: 'Remove Element', desc: 'Remove a widget or container from an Elementor page by element ID.', group: 'Elementor', access: 'write', def: false },
+      { id: 'wsp/elementor-get-active-kit', name: 'Get Active Kit', desc: 'Retrieve global fonts, color palette, and layout from the active Elementor kit.', group: 'Elementor', access: 'read', def: false },
+      { id: 'wsp/elementor-update-active-kit', name: 'Update Active Kit', desc: 'Update colors and layout settings in the active Elementor kit.', group: 'Elementor', access: 'write', def: false },
+      { id: 'wsp/elementor-regenerate-css', name: 'Regenerate CSS', desc: 'Clear and regenerate all Elementor CSS cache files.', group: 'Elementor', access: 'write', def: false },
+      { id: 'wsp/elementor-get-widget-schema', name: 'Get Widget Schema', desc: 'Get control schema for a widget type — margins, padding, background, typography, etc.', group: 'Elementor', access: 'read', def: false },
+      { id: 'wsp/elementor-duplicate-element', name: 'Duplicate Element', desc: 'Clone a widget or container with new unique IDs recursively.', group: 'Elementor', access: 'write', def: false },
+      { id: 'wsp/elementor-move-element', name: 'Move Element', desc: 'Reposition an element to a different parent or index position.', group: 'Elementor', access: 'write', def: false },
+      { id: 'wsp/elementor-convert-css', name: 'Convert CSS to Elementor', desc: 'Parse CSS rules into Elementor-compatible settings structure.', group: 'Elementor', access: 'read', def: false },
+      { id: 'wsp/elementor-get-page-settings', name: 'Get Page Settings', desc: 'Read global page config like template, background, and custom CSS.', group: 'Elementor', access: 'read', def: false },
+      { id: 'wsp/elementor-update-page-settings', name: 'Update Page Settings', desc: 'Update page template (canvas/full-width) and page-level settings.', group: 'Elementor', access: 'write', def: false },
+      { id: 'wsp/elementor-copy-styles', name: 'Copy Element Styles', desc: 'Copy style settings from a source element to a destination element.', group: 'Elementor', access: 'write', def: false },
+      { id: 'wsp/elementor-get-breakpoints', name: 'Get Breakpoints', desc: 'Read responsive breakpoint values from Elementor configuration.', group: 'Elementor', access: 'read', def: false },
       { id: 'wsp/acf-list-field-groups', name: 'List Field Groups', desc: 'List all registered field groups.', group: 'Advanced Custom Fields', access: 'read', def: false },
       { id: 'wsp/acf-get-field-group', name: 'Get Field Group', desc: 'Get detailed setup of a specific field group.', group: 'Advanced Custom Fields', access: 'read', def: false },
       { id: 'wsp/acf-create-field-group', name: 'Create Field Group', desc: 'Create a brand new custom field group configuration.', group: 'Advanced Custom Fields', access: 'write', def: false },

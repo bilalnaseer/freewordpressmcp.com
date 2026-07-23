@@ -20,9 +20,9 @@ The list mirrors the plugin registry at
 
 ## Totals
 
-- **145** total abilities
+- **156** total abilities
 - **27** core (always available)
-- **60** read · **85** write
+- **65** read · **91** write
 
 ---
 
@@ -150,6 +150,51 @@ The list mirrors the plugin registry at
 | `wsp/elementor-add-widget` | Add Widget | Add a widget to a container or column on an Elementor page. | write | off |
 | `wsp/elementor-add-container` | Add Container | Add a layout container or section to an Elementor page. | write | off |
 | `wsp/elementor-remove-element` | Remove Element | Remove a widget or container from an Elementor page by element ID. | write | off |
+| `wsp/elementor-get-active-kit` | Get Active Kit | Retrieve global fonts, color palette, and layout from the active Elementor kit. | read | off |
+| `wsp/elementor-update-active-kit` | Update Active Kit | Update colors and layout settings in the active Elementor kit. | write | off |
+| `wsp/elementor-regenerate-css` | Regenerate CSS | Clear and regenerate all Elementor CSS cache files. | write | off |
+| `wsp/elementor-get-widget-schema` | Get Widget Schema | Get control schema for a widget type — margins, padding, background, typography, etc. | read | off |
+| `wsp/elementor-duplicate-element` | Duplicate Element | Clone a widget or container with new unique IDs recursively. | write | off |
+| `wsp/elementor-move-element` | Move Element | Reposition an element to a different parent or index position. | write | off |
+| `wsp/elementor-convert-css` | Convert CSS to Elementor | Parse CSS rules into Elementor-compatible settings structure. | read | off |
+| `wsp/elementor-get-page-settings` | Get Page Settings | Read global page config like template, background, and custom CSS. | read | off |
+| `wsp/elementor-update-page-settings` | Update Page Settings | Update page template (canvas/full-width) and page-level settings. | write | off |
+| `wsp/elementor-copy-styles` | Copy Element Styles | Copy style settings from a source element to a destination element. | write | off |
+| `wsp/elementor-get-breakpoints` | Get Breakpoints | Read responsive breakpoint values from Elementor configuration. | read | off |
+
+---
+
+## Advanced Custom Fields — requires the ACF plugin
+
+| Ability ID | Name | Description | Access | Default |
+|---|---|---|---|---|
+| `wsp/acf-list-field-groups` | List Field Groups | List all registered field groups. | read | off |
+| `wsp/acf-get-field-group` | Get Field Group | Get detailed setup of a specific field group. | read | off |
+| `wsp/acf-create-field-group` | Create Field Group | Create a brand new custom field group configuration. | write | off |
+| `wsp/acf-update-field-group` | Update Field Group Settings | Update existing custom field group rules/configurations. | write | off |
+| `wsp/acf-delete-field-group` | Delete Field Group | Delete/trash a field group by its key. | write | off |
+| `wsp/acf-import-field-groups` | Import Field Groups | Programmatically import field groups via raw JSON parameters. | write | off |
+| `wsp/acf-list-fields` | List Fields inside Group | List all registered fields configs inside a specific field group. | read | off |
+| `wsp/acf-get-field` | Get Field Config Details | Fetch direct key attributes and parameters for a custom field. | read | off |
+| `wsp/acf-create-field` | Create Field Configuration | Register a new field inside an existing custom group. | write | off |
+| `wsp/acf-update-field-config` | Update Field Configuration | Update schema configuration for a custom field. | write | off |
+| `wsp/acf-delete-field` | Delete Field Config | Deletes config parameters for a custom field. | write | off |
+| `wsp/acf-duplicate-field` | Duplicate Field Config | Duplicate an existing field configuration key. | write | off |
+| `wsp/acf-sync-fields` | Force Sync Fields JSON | Force reload and sync schema settings dynamically. | write | off |
+| `wsp/acf-get-value-deep` | Get Field Value Deep | Dot-notation deep access to variables (e.g. repeater.0.subfield). | read | off |
+| `wsp/acf-update-value-deep` | Update Field Value Deep | Update specific deep metadata locations with dot-notation. | write | off |
+| `wsp/acf-delete-value` | Delete Field Value | Delete specific key field metadata value. | write | off |
+| `wsp/acf-get-all-values` | Get All Fields Values | Get all raw field values mapped on any object. | read | off |
+| `wsp/acf-bulk-update-values` | Bulk Update Values | Bulk update array values instantly. | write | off |
+| `wsp/acf-get-field-object` | Get Value & Config Object | Return both config object and mapped values. | read | off |
+| `wsp/acf-list-post-types` | List Registered Post Types | List post types with active register mappings. | read | off |
+| `wsp/acf-create-post-type` | Create Custom Post Type | Programmatically register brand new WordPress Post Type. | write | off |
+| `wsp/acf-list-taxonomies` | List Registered Taxonomies | List taxonomies structure. | read | off |
+| `wsp/acf-create-taxonomy` | Create Custom Taxonomy | Programmatically register brand new WordPress taxonomy. | write | off |
+| `wsp/acf-list-options-pages` | List ACF Options Pages | List registered global options views. | read | off |
+| `wsp/acf-create-options-page` | Create Options Page | Programmatically register global ACF Options Page. | write | off |
+| `wsp/acf-get-option-value` | Get Option Value | Read global option value metadata. | read | off |
+| `wsp/acf-update-option-value` | Update Option Value | Write option values globally. | write | off |
 
 ---
 
@@ -205,46 +250,12 @@ The list mirrors the plugin registry at
 
 ---
 
-## Advanced Custom Fields — requires the ACF plugin
-
-| Ability ID | Name | Description | Access | Default |
-|---|---|---|---|---|
-| `wsp/acf-list-field-groups` | List Field Groups | List all registered field groups. | read | off |
-| `wsp/acf-get-field-group` | Get Field Group | Get detailed setup of a specific field group. | read | off |
-| `wsp/acf-create-field-group` | Create Field Group | Create a brand new custom field group configuration. | write | off |
-| `wsp/acf-update-field-group` | Update Field Group Settings | Update existing custom field group rules/configurations. | write | off |
-| `wsp/acf-delete-field-group` | Delete Field Group | Delete/trash a field group by its key. | write | off |
-| `wsp/acf-import-field-groups` | Import Field Groups | Programmatically import field groups via raw JSON parameters. | write | off |
-| `wsp/acf-list-fields` | List Fields inside Group | List all registered fields configs inside a specific field group. | read | off |
-| `wsp/acf-get-field` | Get Field Config Details | Fetch direct key attributes and parameters for a custom field. | read | off |
-| `wsp/acf-create-field` | Create Field Configuration | Register a new field inside an existing custom group. | write | off |
-| `wsp/acf-update-field-config` | Update Field Configuration | Update schema configuration for a custom field. | write | off |
-| `wsp/acf-delete-field` | Delete Field Config | Deletes config parameters for a custom field. | write | off |
-| `wsp/acf-duplicate-field` | Duplicate Field Config | Duplicate an existing field configuration key. | write | off |
-| `wsp/acf-sync-fields` | Force Sync Fields JSON | Force reload and sync schema settings dynamically. | write | off |
-| `wsp/acf-get-value-deep` | Get Field Value Deep | Dot-notation deep access to variables (e.g. repeater.0.subfield). | read | off |
-| `wsp/acf-update-value-deep` | Update Field Value Deep | Update specific deep metadata locations with dot-notation. | write | off |
-| `wsp/acf-delete-value` | Delete Field Value | Delete specific key field metadata value. | write | off |
-| `wsp/acf-get-all-values` | Get All Fields Values | Get all raw field values mapped on any object. | read | off |
-| `wsp/acf-bulk-update-values` | Bulk Update Values | Bulk update array values instantly. | write | off |
-| `wsp/acf-get-field-object` | Get Value & Config Object | Return both config object and mapped values. | read | off |
-| `wsp/acf-list-post-types` | List Registered Post Types | List post types with active register mappings. | read | off |
-| `wsp/acf-create-post-type` | Create Custom Post Type | Programmatically register brand new WordPress Post Type. | write | off |
-| `wsp/acf-list-taxonomies` | List Registered Taxonomies | List taxonomies structure. | read | off |
-| `wsp/acf-create-taxonomy` | Create Custom Taxonomy | Programmatically register brand new WordPress taxonomy. | write | off |
-| `wsp/acf-list-options-pages` | List ACF Options Pages | List registered global options views. | read | off |
-| `wsp/acf-create-options-page` | Create Options Page | Programmatically register global ACF Options Page. | write | off |
-| `wsp/acf-get-option-value` | Get Option Value | Read global option value metadata. | read | off |
-| `wsp/acf-update-option-value` | Update Option Value | Write option values globally. | write | off |
-
----
-
 ## Gravity Forms — requires the Gravity Forms plugin
 
 | Ability ID | Name | Description | Access | Default |
 |---|---|---|---|---|
-| `wsp/gravity-list-forms` | List Forms | Lists all Gravity Forms (ID, title, date, active status, entry count). | read | off |
-| `wsp/gravity-get-form` | Get Form | Retrieves full JSON structure of a form (fields, labels, types, choices, rules). | read | off |
+| `wsp/gravity-list-forms` | List Forms | Lists all Gravity Forms (ID, title, date, active status, entry count). | read | on |
+| `wsp/gravity-get-form` | Get Form | Retrieves full JSON structure of a form (fields, labels, types, choices, rules). | read | on |
 | `wsp/gravity-create-form` | Create Form | Creates a new form structure with title and optional fields. | write | off |
 | `wsp/gravity-update-form` | Update Form | Updates form properties, fields, or active status. | write | off |
 | `wsp/gravity-delete-form` | Delete Form | Deletes or trashes a form. | write | off |

@@ -1,9 +1,9 @@
 {
     "totals": {
-        "total": 145,
+        "total": 156,
         "core": 27,
-        "read": 60,
-        "write": 85
+        "read": 65,
+        "write": 91
     },
     "abilities": [
         {
@@ -498,6 +498,105 @@
             "description": "Remove a widget or container from an Elementor page by element ID.",
             "group": "Elementor",
             "access": "write",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-get-active-kit",
+            "name": "Get Active Kit",
+            "description": "Retrieve global fonts, color palette, and layout from the active Elementor kit.",
+            "group": "Elementor",
+            "access": "read",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-update-active-kit",
+            "name": "Update Active Kit",
+            "description": "Update colors and layout settings in the active Elementor kit.",
+            "group": "Elementor",
+            "access": "write",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-regenerate-css",
+            "name": "Regenerate CSS",
+            "description": "Clear and regenerate all Elementor CSS cache files.",
+            "group": "Elementor",
+            "access": "write",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-get-widget-schema",
+            "name": "Get Widget Schema",
+            "description": "Get control schema for a widget type — margins, padding, background, typography, etc.",
+            "group": "Elementor",
+            "access": "read",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-duplicate-element",
+            "name": "Duplicate Element",
+            "description": "Clone a widget or container with new unique IDs recursively.",
+            "group": "Elementor",
+            "access": "write",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-move-element",
+            "name": "Move Element",
+            "description": "Reposition an element to a different parent or index position.",
+            "group": "Elementor",
+            "access": "write",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-convert-css",
+            "name": "Convert CSS to Elementor",
+            "description": "Parse CSS rules into Elementor-compatible settings structure.",
+            "group": "Elementor",
+            "access": "read",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-get-page-settings",
+            "name": "Get Page Settings",
+            "description": "Read global page config like template, background, and custom CSS.",
+            "group": "Elementor",
+            "access": "read",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-update-page-settings",
+            "name": "Update Page Settings",
+            "description": "Update page template (canvas/full-width) and page-level settings.",
+            "group": "Elementor",
+            "access": "write",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-copy-styles",
+            "name": "Copy Element Styles",
+            "description": "Copy style settings from a source element to a destination element.",
+            "group": "Elementor",
+            "access": "write",
+            "default": "off",
+            "requires": "Elementor"
+        },
+        {
+            "id": "wsp/elementor-get-breakpoints",
+            "name": "Get Breakpoints",
+            "description": "Read responsive breakpoint values from Elementor configuration.",
+            "group": "Elementor",
+            "access": "read",
             "default": "off",
             "requires": "Elementor"
         },
@@ -1156,7 +1255,7 @@
             "group": "Gravity Forms",
             "access": "read",
             "default": "on",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-get-form",
@@ -1165,7 +1264,7 @@
             "group": "Gravity Forms",
             "access": "read",
             "default": "on",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-create-form",
@@ -1174,7 +1273,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-update-form",
@@ -1183,7 +1282,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-delete-form",
@@ -1192,7 +1291,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-list-entries",
@@ -1201,7 +1300,7 @@
             "group": "Gravity Forms",
             "access": "read",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-get-entry",
@@ -1210,7 +1309,7 @@
             "group": "Gravity Forms",
             "access": "read",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-update-entry",
@@ -1219,7 +1318,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-delete-entry",
@@ -1228,7 +1327,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-get-notifications",
@@ -1237,7 +1336,7 @@
             "group": "Gravity Forms",
             "access": "read",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-get-confirmations",
@@ -1246,7 +1345,7 @@
             "group": "Gravity Forms",
             "access": "read",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-create-notification",
@@ -1255,7 +1354,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-update-notification",
@@ -1264,7 +1363,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-delete-notification",
@@ -1273,7 +1372,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-create-confirmation",
@@ -1282,7 +1381,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-update-confirmation",
@@ -1291,7 +1390,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-delete-confirmation",
@@ -1300,7 +1399,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         },
         {
             "id": "wsp/gravity-update-form-settings",
@@ -1309,7 +1408,7 @@
             "group": "Gravity Forms",
             "access": "write",
             "default": "off",
-            "requires": null
+            "requires": "Gravity Forms"
         }
     ]
 }
