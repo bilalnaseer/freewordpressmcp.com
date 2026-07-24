@@ -466,6 +466,13 @@
       }
     }
 
+    /* animatable angle for the badge's spinning border */
+    @property --badge-angle {
+      syntax: "<angle>";
+      inherits: true;
+      initial-value: 0deg;
+    }
+
     .eyebrow {
       font-family: var(--mono);
       font-size: 12px;
@@ -476,6 +483,11 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      position: relative;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--rule-light);
+      animation: badgeBorderSpin 3s linear infinite;
     }
 
     .eyebrow::before {
@@ -483,6 +495,30 @@
       width: 28px;
       height: 1px;
       background: var(--amber);
+    }
+
+    /* amber arc sweeping around the pill border */
+    .eyebrow::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      padding: 2px;
+      background: conic-gradient(from var(--badge-angle),
+          var(--amber) 0deg,
+          rgba(245, 165, 36, 0.35) 70deg,
+          transparent 140deg 360deg);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    @keyframes badgeBorderSpin {
+      to {
+        --badge-angle: 360deg;
+      }
     }
 
     h1 {
@@ -502,7 +538,7 @@
     }
 
     h1 em {
-      font-style: italic;
+      font-style: normal;
       font-weight: 400;
       color: var(--amber);
       font-feature-settings: "ss01";
@@ -553,7 +589,8 @@
       }
 
       .hero .eyebrow {
-        animation-delay: 0.05s;
+        animation: heroRise .7s cubic-bezier(.2, .7, .3, 1) both, badgeBorderSpin 3s linear infinite;
+        animation-delay: .05s, 0s;
       }
 
       .hero h1 {
@@ -1471,7 +1508,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap">
-        <span class="eyebrow">Free &amp; open source · WordPress plugin</span>
+        <span class="eyebrow">Free WordPress MCP Plugin - Open Source</span>
         <h1 id="heroTitle">The <em>Free WordPress MCP</em> Plugin — Connect Any AI Agent to Your Site</h1>
         <p class="lede">Ask Claude, ChatGPT, or any MCP-compatible AI to improve your SEO, write posts, update pages, or
           manage your site — and watch it happen, live, on your WordPress dashboard.</p>
