@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed — SEO / GEO / AEO pass on the homepage (2026-07-24)
+- **JSON-LD rebuilt as a single `@graph`** on `index.html`: added `Organization`, `WebSite` (with `dateModified`), and `HowTo` nodes; upgraded `SoftwareApplication` (correct name "WSP MCP – AI Agents Connector", `DeveloperApplication` category, v2.6.5, WordPress.org `downloadUrl`/`installUrl`, `isAccessibleForFree`, `featureList`, `availability` on the zero-price offer); expanded `FAQPage` to 8 questions. `VideoObject` kept as-is. The old standalone `SoftwareApplication` (v1.0, GitHub-only) and `FAQPage` blocks were removed.
+- **Hero H1 now carries the target keyword**: "The Free WordPress MCP Plugin — Connect Any AI Agent to Your Site" as real text with the amber shimmer on the keyword. The SVG letter-trace headline (which duplicated every letter in the DOM — a crawler duplicate-text issue) was removed along with its CSS.
+- **Title tag trimmed to 59 chars** ("Free WordPress MCP Plugin — Connect Any AI Agent to Your Site") and **meta description to 155 chars**; `og:title`/`og:description` updated to match.
+- **New definitional `#what-is` section** below the hero: extractable "A WordPress MCP plugin is…" definition plus question-phrased H3s ("Why does MCP matter for WordPress?", "Is a free WordPress MCP plugin safe to use?"), mirrored into the `FAQPage` schema, with keyword-anchored links to the abilities directory and tutorials.
+- **Keyword-anchored internal links**: footer now links "Download the free WordPress MCP plugin", "Browse every WordPress MCP ability", and the Claude/Cursor tutorials with descriptive anchors; setup step 1 leads with the WordPress.org download; all four tutorial pages link back to the homepage with the anchor "Free WordPress MCP plugin".
+- **Freshness signals**: visible "Last updated: 24 July 2026 · Plugin version 2.6.5" line in the footer, `dateModified` in the `WebSite` schema node, and homepage/tutorial `lastmod` bumps in `sitemap.xml` (also normalized the malformed antigravity/cursor entries).
+
 ### Fixed
 - **www → non-www SEO redirect.** `www.freewordpressmcp.com` was serving pages with a `200` (duplicate content) instead of redirecting, because the `_redirects` rule used a hostname-based source — which Cloudflare Pages ignores (it matches on path only). Replaced it with a proxied Cloudflare **Redirect Rule** (301, path + query preserved) plus a proxied `www` CNAME so the rule fires. `_redirects` now documents that www canonicalization lives at the zone level. Verified: `https://www/*` → `301` → `https://freewordpressmcp.com/*`.
 
