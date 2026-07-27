@@ -72,7 +72,7 @@ The list mirrors the plugin registry at
 | `wsp/count-media` | Count Media | Get media library counts grouped by MIME type, plus a total. | read | off |
 | `wsp/update-media` | Update Media | Update the title, alt text, caption, or description of a media file by ID. | write | off |
 | `wsp/delete-media` | Delete Media | Permanently delete a media file from the media library by ID. | write | off |
-| `wsp/upload-media` | Upload Media | Upload an image or file from a URL directly into the media library. | write | off |
+| `wsp/upload-media` | Upload Media | Upload an image into the media library from base64 file content (attach a file directly in chat) or a URL. | write | off |
 | `wsp/upload-media-from-url` | Upload Media From URL | Pull an image from any web link straight into your media library. | write | off |
 | `wsp/set-featured-image` | Set Featured Image | Set an image as the featured image (thumbnail) for a post or page. | write | off |
 

@@ -189,7 +189,7 @@
         {
             "id": "wsp/upload-media",
             "name": "Upload Media",
-            "description": "Upload an image or file from a URL directly into the media library.",
+            "description": "Upload an image into the media library from base64 file content (attach a file directly in chat) or a URL.",
             "group": "Media",
             "access": "write",
             "default": "off",
