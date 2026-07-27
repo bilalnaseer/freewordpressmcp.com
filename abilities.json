@@ -1,9 +1,9 @@
 {
     "totals": {
-        "total": 156,
+        "total": 178,
         "core": 27,
-        "read": 65,
-        "write": 91
+        "read": 77,
+        "write": 101
     },
     "abilities": [
         {
@@ -189,7 +189,7 @@
         {
             "id": "wsp/upload-media",
             "name": "Upload Media",
-            "description": "Upload an image or file from a URL directly into the media library.",
+            "description": "Upload an image into the media library from base64 file content (attach a file directly in chat) or a URL.",
             "group": "Media",
             "access": "write",
             "default": "off",
@@ -1409,6 +1409,204 @@
             "access": "write",
             "default": "off",
             "requires": "Gravity Forms"
+        },
+        {
+            "id": "wsp/cf7-list-forms",
+            "name": "List CF7 Forms",
+            "description": "Lists all Contact Form 7 forms with ID, title, and shortcode.",
+            "group": "Contact Form 7",
+            "access": "read",
+            "default": "on",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-get-form",
+            "name": "Get CF7 Form",
+            "description": "Retrieves full CF7 form structure (markup, mail config, messages, tags).",
+            "group": "Contact Form 7",
+            "access": "read",
+            "default": "on",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-create-form",
+            "name": "Create CF7 Form",
+            "description": "Creates a new Contact Form 7 form with title and optional markup/properties.",
+            "group": "Contact Form 7",
+            "access": "write",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-update-form",
+            "name": "Update CF7 Form",
+            "description": "Updates an existing CF7 form markup, mail settings, or messages.",
+            "group": "Contact Form 7",
+            "access": "write",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-delete-form",
+            "name": "Delete CF7 Form",
+            "description": "Trashes or permanently deletes a Contact Form 7 form.",
+            "group": "Contact Form 7",
+            "access": "write",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-list-entries",
+            "name": "List CF7 Entries",
+            "description": "Lists Flamingo-stored form submissions (requires Flamingo plugin).",
+            "group": "Contact Form 7",
+            "access": "read",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-get-entry",
+            "name": "Get CF7 Entry",
+            "description": "Retrieves full details of a single Flamingo submission by ID.",
+            "group": "Contact Form 7",
+            "access": "read",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-validate-form",
+            "name": "Validate CF7 Form",
+            "description": "Runs the built-in configuration validator to check for email/syntax errors.",
+            "group": "Contact Form 7",
+            "access": "read",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-get-integrations",
+            "name": "Get CF7 Integrations",
+            "description": "Lists active integration modules and reCAPTCHA configuration status.",
+            "group": "Contact Form 7",
+            "access": "read",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/cf7-moderate-entry",
+            "name": "Moderate CF7 Entry",
+            "description": "Mark a Flamingo submission as spam, unspam, trash, or untrash.",
+            "group": "Contact Form 7",
+            "access": "write",
+            "default": "off",
+            "requires": "Contact Form 7"
+        },
+        {
+            "id": "wsp/wpforms-list-forms",
+            "name": "List WPForms",
+            "description": "Lists all WPForms with ID, title, date, status, and field count.",
+            "group": "WPForms",
+            "access": "read",
+            "default": "on",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-get-form",
+            "name": "Get Form",
+            "description": "Retrieves full WPForms structure (fields, settings, payments config).",
+            "group": "WPForms",
+            "access": "read",
+            "default": "on",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-describe-schema",
+            "name": "Describe Schema",
+            "description": "Returns supported field types and editable attributes to guide AI.",
+            "group": "WPForms",
+            "access": "read",
+            "default": "on",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-get-form-stats",
+            "name": "Get Form Stats",
+            "description": "Fetch entry counts and analytics for forms (Pro entry stats).",
+            "group": "WPForms",
+            "access": "read",
+            "default": "on",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-create-form",
+            "name": "Create Form",
+            "description": "Creates a new WPForms form with fields, settings, and notifications.",
+            "group": "WPForms",
+            "access": "write",
+            "default": "off",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-update-form-settings",
+            "name": "Update Form Settings",
+            "description": "Update form settings (title, description, submit text, AJAX, anti-spam).",
+            "group": "WPForms",
+            "access": "write",
+            "default": "off",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-add-field",
+            "name": "Add Field",
+            "description": "Add a new field to an existing form with auto-assigned ID.",
+            "group": "WPForms",
+            "access": "write",
+            "default": "off",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-update-field",
+            "name": "Update Field",
+            "description": "Update a field's label, description, required status, or choices.",
+            "group": "WPForms",
+            "access": "write",
+            "default": "off",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-delete-form",
+            "name": "Delete Form",
+            "description": "Trashes or permanently deletes a WPForms form.",
+            "group": "WPForms",
+            "access": "write",
+            "default": "off",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-list-entries",
+            "name": "List Entries",
+            "description": "Lists submission entries for a form (requires WPForms Pro).",
+            "group": "WPForms",
+            "access": "read",
+            "default": "off",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-get-entry",
+            "name": "Get Entry",
+            "description": "Retrieves full details and field values of a single entry.",
+            "group": "WPForms",
+            "access": "read",
+            "default": "off",
+            "requires": "WPForms"
+        },
+        {
+            "id": "wsp/wpforms-delete-entry",
+            "name": "Delete Entry",
+            "description": "Trashes or permanently deletes a submission entry (Pro).",
+            "group": "WPForms",
+            "access": "write",
+            "default": "off",
+            "requires": "WPForms"
         }
     ]
 }

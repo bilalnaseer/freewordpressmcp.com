@@ -1038,7 +1038,9 @@
       'Elementor': { core: false, requires: 'Elementor' },
       'Advanced Custom Fields': { core: false, requires: 'Advanced Custom Fields' },
       'Ultimate Addons Elementor': { core: false, requires: 'Ultimate Addons Elementor' },
-      'Gravity Forms': { core: false, requires: 'Gravity Forms' }
+      'Gravity Forms': { core: false, requires: 'Gravity Forms' },
+      'Contact Form 7': { core: false, requires: 'Contact Form 7' },
+      'WPForms': { core: false, requires: 'WPForms' }
     };
 
     var ABILITIES = [
@@ -1062,7 +1064,7 @@
       { id: 'wsp/count-media', name: 'Count Media', desc: 'Get media library counts grouped by MIME type, plus a total.', group: 'Media', access: 'read', def: false },
       { id: 'wsp/update-media', name: 'Update Media', desc: 'Update the title, alt text, caption, or description of a media file by ID.', group: 'Media', access: 'write', def: false },
       { id: 'wsp/delete-media', name: 'Delete Media', desc: 'Permanently delete a media file from the media library by ID.', group: 'Media', access: 'write', def: false },
-      { id: 'wsp/upload-media', name: 'Upload Media', desc: 'Upload an image or file from a URL directly into the media library.', group: 'Media', access: 'write', def: false },
+      { id: 'wsp/upload-media', name: 'Upload Media', desc: 'Upload an image into the media library from base64 file content (attach a file directly in chat) or a URL.', group: 'Media', access: 'write', def: false },
       { id: 'wsp/upload-media-from-url', name: 'Upload Media From URL', desc: 'Pull an image from any web link straight into your media library.', group: 'Media', access: 'write', def: false },
       { id: 'wsp/set-featured-image', name: 'Set Featured Image', desc: 'Set an image as the featured image (thumbnail) for a post or page.', group: 'Media', access: 'write', def: false },
       { id: 'wsp/get-users', name: 'Read Users', desc: 'List users with display name, email, and role.', group: 'Users', access: 'read', def: false },
@@ -1197,7 +1199,29 @@
       { id: 'wsp/gravity-create-confirmation', name: 'Create Confirmation', desc: 'Creates a confirmation (thank-you message, redirect, or page).', group: 'Gravity Forms', access: 'write', def: false },
       { id: 'wsp/gravity-update-confirmation', name: 'Update Confirmation', desc: 'Updates an existing confirmation (message, redirect URL, default status, etc.).', group: 'Gravity Forms', access: 'write', def: false },
       { id: 'wsp/gravity-delete-confirmation', name: 'Delete Confirmation', desc: 'Deletes a confirmation from a form.', group: 'Gravity Forms', access: 'write', def: false },
-      { id: 'wsp/gravity-update-form-settings', name: 'Update Form Settings', desc: 'Updates form-level settings (label placement, restrictions, scheduling, honeypot, etc.).', group: 'Gravity Forms', access: 'write', def: false }
+      { id: 'wsp/gravity-update-form-settings', name: 'Update Form Settings', desc: 'Updates form-level settings (label placement, restrictions, scheduling, honeypot, etc.).', group: 'Gravity Forms', access: 'write', def: false },
+      { id: 'wsp/cf7-list-forms', name: 'List CF7 Forms', desc: 'Lists all Contact Form 7 forms with ID, title, and shortcode.', group: 'Contact Form 7', access: 'read', def: true },
+      { id: 'wsp/cf7-get-form', name: 'Get CF7 Form', desc: 'Retrieves full CF7 form structure (markup, mail config, messages, tags).', group: 'Contact Form 7', access: 'read', def: true },
+      { id: 'wsp/cf7-create-form', name: 'Create CF7 Form', desc: 'Creates a new Contact Form 7 form with title and optional markup/properties.', group: 'Contact Form 7', access: 'write', def: false },
+      { id: 'wsp/cf7-update-form', name: 'Update CF7 Form', desc: 'Updates an existing CF7 form markup, mail settings, or messages.', group: 'Contact Form 7', access: 'write', def: false },
+      { id: 'wsp/cf7-delete-form', name: 'Delete CF7 Form', desc: 'Trashes or permanently deletes a Contact Form 7 form.', group: 'Contact Form 7', access: 'write', def: false },
+      { id: 'wsp/cf7-list-entries', name: 'List CF7 Entries', desc: 'Lists Flamingo-stored form submissions (requires Flamingo plugin).', group: 'Contact Form 7', access: 'read', def: false },
+      { id: 'wsp/cf7-get-entry', name: 'Get CF7 Entry', desc: 'Retrieves full details of a single Flamingo submission by ID.', group: 'Contact Form 7', access: 'read', def: false },
+      { id: 'wsp/cf7-validate-form', name: 'Validate CF7 Form', desc: 'Runs the built-in configuration validator to check for email/syntax errors.', group: 'Contact Form 7', access: 'read', def: false },
+      { id: 'wsp/cf7-get-integrations', name: 'Get CF7 Integrations', desc: 'Lists active integration modules and reCAPTCHA configuration status.', group: 'Contact Form 7', access: 'read', def: false },
+      { id: 'wsp/cf7-moderate-entry', name: 'Moderate CF7 Entry', desc: 'Mark a Flamingo submission as spam, unspam, trash, or untrash.', group: 'Contact Form 7', access: 'write', def: false },
+      { id: 'wsp/wpforms-list-forms', name: 'List WPForms', desc: 'Lists all WPForms with ID, title, date, status, and field count.', group: 'WPForms', access: 'read', def: true },
+      { id: 'wsp/wpforms-get-form', name: 'Get Form', desc: 'Retrieves full WPForms structure (fields, settings, payments config).', group: 'WPForms', access: 'read', def: true },
+      { id: 'wsp/wpforms-describe-schema', name: 'Describe Schema', desc: 'Returns supported field types and editable attributes to guide AI.', group: 'WPForms', access: 'read', def: true },
+      { id: 'wsp/wpforms-get-form-stats', name: 'Get Form Stats', desc: 'Fetch entry counts and analytics for forms (Pro entry stats).', group: 'WPForms', access: 'read', def: true },
+      { id: 'wsp/wpforms-create-form', name: 'Create Form', desc: 'Creates a new WPForms form with fields, settings, and notifications.', group: 'WPForms', access: 'write', def: false },
+      { id: 'wsp/wpforms-update-form-settings', name: 'Update Form Settings', desc: 'Update form settings (title, description, submit text, AJAX, anti-spam).', group: 'WPForms', access: 'write', def: false },
+      { id: 'wsp/wpforms-add-field', name: 'Add Field', desc: 'Add a new field to an existing form with auto-assigned ID.', group: 'WPForms', access: 'write', def: false },
+      { id: 'wsp/wpforms-update-field', name: 'Update Field', desc: 'Update a field\'s label, description, required status, or choices.', group: 'WPForms', access: 'write', def: false },
+      { id: 'wsp/wpforms-delete-form', name: 'Delete Form', desc: 'Trashes or permanently deletes a WPForms form.', group: 'WPForms', access: 'write', def: false },
+      { id: 'wsp/wpforms-list-entries', name: 'List Entries', desc: 'Lists submission entries for a form (requires WPForms Pro).', group: 'WPForms', access: 'read', def: false },
+      { id: 'wsp/wpforms-get-entry', name: 'Get Entry', desc: 'Retrieves full details and field values of a single entry.', group: 'WPForms', access: 'read', def: false },
+      { id: 'wsp/wpforms-delete-entry', name: 'Delete Entry', desc: 'Trashes or permanently deletes a submission entry (Pro).', group: 'WPForms', access: 'write', def: false }
     ];
 
     // ----- rendering -----

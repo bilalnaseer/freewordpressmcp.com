@@ -20,9 +20,9 @@ The list mirrors the plugin registry at
 
 ## Totals
 
-- **156** total abilities
+- **178** total abilities
 - **27** core (always available)
-- **65** read · **91** write
+- **77** read · **101** write
 
 ---
 
@@ -72,7 +72,7 @@ The list mirrors the plugin registry at
 | `wsp/count-media` | Count Media | Get media library counts grouped by MIME type, plus a total. | read | off |
 | `wsp/update-media` | Update Media | Update the title, alt text, caption, or description of a media file by ID. | write | off |
 | `wsp/delete-media` | Delete Media | Permanently delete a media file from the media library by ID. | write | off |
-| `wsp/upload-media` | Upload Media | Upload an image or file from a URL directly into the media library. | write | off |
+| `wsp/upload-media` | Upload Media | Upload an image into the media library from base64 file content (attach a file directly in chat) or a URL. | write | off |
 | `wsp/upload-media-from-url` | Upload Media From URL | Pull an image from any web link straight into your media library. | write | off |
 | `wsp/set-featured-image` | Set Featured Image | Set an image as the featured image (thumbnail) for a post or page. | write | off |
 
@@ -272,3 +272,39 @@ The list mirrors the plugin registry at
 | `wsp/gravity-update-confirmation` | Update Confirmation | Updates an existing confirmation (message, redirect URL, default status, etc.). | write | off |
 | `wsp/gravity-delete-confirmation` | Delete Confirmation | Deletes a confirmation from a form. | write | off |
 | `wsp/gravity-update-form-settings` | Update Form Settings | Updates form-level settings (label placement, restrictions, scheduling, honeypot, etc.). | write | off |
+
+---
+
+## Contact Form 7 — requires the Contact Form 7 plugin
+
+| Ability ID | Name | Description | Access | Default |
+|---|---|---|---|---|
+| `wsp/cf7-list-forms` | List CF7 Forms | Lists all Contact Form 7 forms with ID, title, and shortcode. | read | on |
+| `wsp/cf7-get-form` | Get CF7 Form | Retrieves full CF7 form structure (markup, mail config, messages, tags). | read | on |
+| `wsp/cf7-create-form` | Create CF7 Form | Creates a new Contact Form 7 form with title and optional markup/properties. | write | off |
+| `wsp/cf7-update-form` | Update CF7 Form | Updates an existing CF7 form markup, mail settings, or messages. | write | off |
+| `wsp/cf7-delete-form` | Delete CF7 Form | Trashes or permanently deletes a Contact Form 7 form. | write | off |
+| `wsp/cf7-list-entries` | List CF7 Entries | Lists Flamingo-stored form submissions (requires Flamingo plugin). | read | off |
+| `wsp/cf7-get-entry` | Get CF7 Entry | Retrieves full details of a single Flamingo submission by ID. | read | off |
+| `wsp/cf7-validate-form` | Validate CF7 Form | Runs the built-in configuration validator to check for email/syntax errors. | read | off |
+| `wsp/cf7-get-integrations` | Get CF7 Integrations | Lists active integration modules and reCAPTCHA configuration status. | read | off |
+| `wsp/cf7-moderate-entry` | Moderate CF7 Entry | Mark a Flamingo submission as spam, unspam, trash, or untrash. | write | off |
+
+---
+
+## WPForms — requires the WPForms plugin
+
+| Ability ID | Name | Description | Access | Default |
+|---|---|---|---|---|
+| `wsp/wpforms-list-forms` | List WPForms | Lists all WPForms with ID, title, date, status, and field count. | read | on |
+| `wsp/wpforms-get-form` | Get Form | Retrieves full WPForms structure (fields, settings, payments config). | read | on |
+| `wsp/wpforms-describe-schema` | Describe Schema | Returns supported field types and editable attributes to guide AI. | read | on |
+| `wsp/wpforms-get-form-stats` | Get Form Stats | Fetch entry counts and analytics for forms (Pro entry stats). | read | on |
+| `wsp/wpforms-create-form` | Create Form | Creates a new WPForms form with fields, settings, and notifications. | write | off |
+| `wsp/wpforms-update-form-settings` | Update Form Settings | Update form settings (title, description, submit text, AJAX, anti-spam). | write | off |
+| `wsp/wpforms-add-field` | Add Field | Add a new field to an existing form with auto-assigned ID. | write | off |
+| `wsp/wpforms-update-field` | Update Field | Update a field's label, description, required status, or choices. | write | off |
+| `wsp/wpforms-delete-form` | Delete Form | Trashes or permanently deletes a WPForms form. | write | off |
+| `wsp/wpforms-list-entries` | List Entries | Lists submission entries for a form (requires WPForms Pro). | read | off |
+| `wsp/wpforms-get-entry` | Get Entry | Retrieves full details and field values of a single entry. | read | off |
+| `wsp/wpforms-delete-entry` | Delete Entry | Trashes or permanently deletes a submission entry (Pro). | write | off |
