@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added — Blog section + Sveltia CMS (2026-08-14)
+- **`/blog/` section**, generated from Markdown in `content/blog/` by `tools/build-blog.js`. Each post becomes a static, crawlable `/blog/<slug>/index.html`; the index lists every non-draft post newest-first. Ported from the [seo-schema-markup](https://github.com/bilalnaseer/seo-schema-markup) repo's blog pipeline and re-skinned to this site's chrome.
+- **`tools/chrome.js`** — shared `<head>`, topbar, closer, footer and CSS for generated pages, matching the hand-written tutorial pages (same tokens, theme toggle, dropdown nav). Nav wraps instead of disappearing below 640px, since generated pages carry no hamburger script.
+- **Markdown builder** with front matter, headings, lists, blockquotes, fenced code, pipe tables, images and links. Zero dependencies — plain Node, no npm install.
+- **Per-post JSON-LD**: `BlogPosting` (headline, description, image, dates, keywords, author, publisher, `isPartOf` the Blog) + `BreadcrumbList`. A post ending in an `## FAQ` section with `###` questions also gets a `FAQPage` node built automatically from those pairs. The blog index emits a `Blog` node listing every post.
+- **`sitemap.xml` is now generated** by `tools/build-sitemap.js`: the hand-written pages live in a `STATIC_URLS` array (with their existing `lastmod` dates preserved), blog URLs are appended automatically, and `/blog/` takes the newest post's date.
+- **Sveltia CMS at `/admin`** (`admin/index.html`, `admin/config.yml`, vendored `admin/sveltia-cms.js` — pinned, no CDN). Editorial workflow (Draft → In review → Ready) so nothing publishes without approval; cover images land in `assets/img/blog/`. Points at the existing `sveltiacms.bilalnaseer01.workers.dev` auth Worker.
+- **First post**: "What Is WordPress MCP? A Plain-English Guide to Connecting AI Agents to Your Site" (`/blog/what-is-wordpress-mcp/`), with an FAQ section feeding `FAQPage` schema and internal links to the setup steps, abilities directory and all four tutorials.
+- **`BLOG-SETUP.md`** documenting the one-time dashboard setup: the Cloudflare Pages build command (`node tools/build-blog.js && node tools/build-sitemap.js`), the GitHub OAuth app, and adding `freewordpressmcp.com` to the auth Worker's `ALLOWED_DOMAINS`.
+- **"Blog" nav link** added to the main nav on `index.html`, `tutorials.html`, `abilities-directory.html` and all four tutorial pages.
+- `robots.txt` now disallows `/admin/`, and `_headers` sends `X-Robots-Tag: noindex, nofollow` for `/admin/*`.
+- Documented the blog workflow in `AGENTS.MD`: `/blog/` and `sitemap.xml` are generated output and must never be hand-edited.
+
 ### Changed — SEO / GEO / AEO pass on the homepage (2026-07-24)
 - **JSON-LD rebuilt as a single `@graph`** on `index.html`: added `Organization`, `WebSite` (with `dateModified`), and `HowTo` nodes; upgraded `SoftwareApplication` (correct name "WSP MCP – AI Agents Connector", `DeveloperApplication` category, v2.6.5, WordPress.org `downloadUrl`/`installUrl`, `isAccessibleForFree`, `featureList`, `availability` on the zero-price offer); expanded `FAQPage` to 8 questions. `VideoObject` kept as-is. The old standalone `SoftwareApplication` (v1.0, GitHub-only) and `FAQPage` blocks were removed.
 - **Hero H1 now carries the target keyword**: "The Free WordPress MCP Plugin — Connect Any AI Agent to Your Site" as real text with the amber shimmer on the keyword. The SVG letter-trace headline (which duplicated every letter in the DOM — a crawler duplicate-text issue) was removed along with its CSS.
