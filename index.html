@@ -169,6 +169,23 @@
       padding: 0 24px;
     }
 
+    /* ----- centered reading column -----
+       Text-heavy sections share one narrower, page-centered column (760px of
+       text + the 24px wrap padding) so the heading and the body copy keep the
+       same left edge instead of the copy hugging the left of a 1100px band.
+       Grid and card sections keep the full-width wrap. */
+    #what-is .wrap,
+    #faq .wrap {
+      max-width: 808px;
+    }
+
+    #what-is .section-head,
+    #faq .section-head,
+    #what-is .prose,
+    #faq details p {
+      max-width: none;
+    }
+
     /* ----- top bar ----- */
     .topbar {
       border-bottom: 1px solid var(--rule-light);

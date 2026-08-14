@@ -157,6 +157,16 @@
 
   @media (max-width: 640px) { .topbar nav { display: none; } }
 
+  /* ----- centered reading column -----
+     Hero, video and copy share one narrower, page-centered column so every
+     left edge lines up instead of the text hugging the left of a 1100px band.
+     The topbar and footer keep the full-width wrap. */
+  .page-hero .wrap,
+  .tutorials .wrap,
+  .content-body .wrap {
+    max-width: 808px;
+  }
+
   /* ----- page header ----- */
   .page-hero {
     padding: 72px 0 56px;
@@ -222,9 +232,9 @@
   /* ----- content body ----- */
   .content-body { padding: 80px 0; border-bottom: 1px solid var(--rule-light); }
   .content-body h2 { font-size: clamp(22px, 3vw, 32px); margin-bottom: 20px; }
-  .prose { max-width: 760px; color: var(--muted); font-size: 16px; line-height: 1.7; margin: 0 0 24px; }
+  .prose { color: var(--muted); font-size: 16px; line-height: 1.7; margin: 0 0 24px; }
   .prose strong { color: var(--ink); }
-  .benefit-list { list-style: none; padding: 0; margin: 0 0 48px; display: grid; gap: 10px; max-width: 760px; }
+  .benefit-list { list-style: none; padding: 0; margin: 0 0 48px; display: grid; gap: 10px; }
   .benefit-list li { padding-left: 28px; position: relative; color: var(--muted); font-size: 16px; line-height: 1.55; }
   .benefit-list li::before { content: "→"; position: absolute; left: 0; color: var(--amber); }
   .steps { display: grid; gap: 28px; margin-bottom: 64px; }

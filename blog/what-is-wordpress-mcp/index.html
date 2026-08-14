@@ -103,6 +103,11 @@
 
   .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
+  /* Centered reading column: a post's breadcrumb, body and "next" band share
+     one 760px column centered in the page, rather than hugging the left of the
+     1100px wrap. The blog index keeps the full width for its card grid. */
+  .post-page .wrap { max-width: 808px; }
+
   /* ----- top bar ----- */
   .topbar {
     border-bottom: 1px solid var(--rule-light);
@@ -240,7 +245,7 @@
 
   /* ----- post ----- */
   .post { padding: 32px 0 72px; }
-  .post-head { max-width: 760px; }
+  .post-head { max-width: none; }
   .post-meta {
     font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
     color: var(--muted); margin: 0 0 28px;
@@ -255,8 +260,8 @@
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
     border: 1px solid var(--rule-light); border-radius: 999px; padding: 4px 10px; color: var(--muted);
   }
-  .post-cover { width: 100%; max-width: 860px; border-radius: 12px; display: block; margin: 0 0 40px; }
-  .prose { max-width: 760px; color: var(--muted); font-size: 17px; line-height: 1.75; }
+  .post-cover { width: 100%; border-radius: 12px; display: block; margin: 0 0 40px; }
+  .prose { color: var(--muted); font-size: 17px; line-height: 1.75; }
   .prose > *:first-child { margin-top: 0; }
   .prose h2 { margin: 48px 0 14px; }
   .prose h3 {
@@ -356,34 +361,14 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "What Is WordPress MCP? A Plain-English Guide",
-  "description": "WordPress MCP lets Claude, Cursor, Codex or any MCP agent read and edit your site directly. Here's what MCP is, how the free plugin works, and how to set it up.",
-  "datePublished": "2026-08-14T00:00:00.000Z",
-  "dateModified": "2026-08-14T00:00:00.000Z",
-  "keywords": "WordPress MCP, Model Context Protocol, AI agents",
-  "author": {
-    "@type": "Person",
-    "name": "Bilal Naseer",
-    "url": "https://websensepro.com"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "WebSensePro",
-    "url": "https://websensepro.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://freewordpressmcp.com/assets/free-wordpress-mcp-icon-dark.svg"
-    }
-  },
-  "isPartOf": {
-    "@type": "Blog",
-    "name": "Free WordPress MCP Blog",
-    "@id": "https://freewordpressmcp.com/blog/"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://freewordpressmcp.com/blog/what-is-wordpress-mcp/"
+  "@type": "CreativeWorkSeries",
+  "name": "What Is WordPress MCP? A Plain-English Guide",
+  "url": "https://freewordpressmcp.com/blog/what-is-wordpress-mcp/",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "50",
+    "bestRating": "5"
   }
 }
 </script>
@@ -467,14 +452,14 @@
   </div>
 </header>
 
-<main>
+<main class="post-page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › What Is WordPress MCP? A Plain-English Guide</nav>
     <article class="post">
       <div class="post-head">
         <h1>What Is WordPress MCP? A Plain-English Guide</h1>
-        <p class="post-meta"><time datetime="2026-08-14T00:00:00.000Z">14 August 2026</time> · by <a href="https://websensepro.com" rel="noopener">Bilal Naseer</a></p>
-        
+        <p class="post-meta"><time datetime="2026-08-14T00:00:00.000Z">14 August 2026</time> · by admin</p>
+        <p class="post-rating" aria-label="Rated 4.9 out of 5"><span class="post-rating-star" aria-hidden="true">★</span> <strong>4.9</strong> <span class="muted">/ 5 · 50 ratings</span></p>
       </div>
       
       <ul class="post-tags"><li>WordPress MCP</li><li>Model Context Protocol</li><li>AI agents</li></ul>

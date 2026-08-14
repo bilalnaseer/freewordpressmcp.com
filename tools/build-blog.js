@@ -20,7 +20,7 @@ const { SITE, PUBLISHER, esc, head, footer, breadcrumbJsonLd, linkCards } = requ
 const CONTENT_DIR = path.join(ROOT, 'content', 'blog');
 const OUT_DIR = path.join(ROOT, 'blog');
 const BLOG_NAME = 'Free WordPress MCP Blog';
-const DEFAULT_AUTHOR = { name: 'Bilal Naseer', url: 'https://websensepro.com' };
+const DEFAULT_AUTHOR = { name: 'admin', url: '' };
 
 /* Cards shown under every post and on the index, linking back into the site. */
 const NEXT_CARDS = [
@@ -346,14 +346,15 @@ function postPage(p) {
   };
   const dateLine = [
     p.date ? `<time datetime="${esc(isoDate(p.date))}">${humanDate(p.date)}</time>` : '',
-    `by <a href="${esc(p.authorUrl)}" rel="noopener">${esc(p.author)}</a>`,
+    // A blank author URL renders the byline as plain text, not an empty link.
+    p.authorUrl ? `by <a href="${esc(p.authorUrl)}" rel="noopener">${esc(p.author)}</a>` : `by ${esc(p.author)}`,
     p.updated ? `Updated ${humanDate(p.updated)}` : '',
   ].filter(Boolean).join(' · ');
   const extraHead = [crumbs, articleJsonLd(p), faqJsonLd(p.faqs)].filter(Boolean).join('\n');
 
   return `${head(meta, extraHead)}
 
-<main>
+<main class="post-page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › ${esc(p.title)}</nav>
     <article class="post">

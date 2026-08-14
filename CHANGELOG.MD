@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed — Blog author defaults (2026-08-14)
+- Default blog author is now **`admin`** with a **blank** author URL, in both the CMS (`admin/config.yml`) and the builder fallback (`DEFAULT_AUTHOR` in `tools/build-blog.js`).
+- A blank author URL now renders the byline as plain text instead of an empty `<a href="">`, and the `author.url` property is omitted from the `BlogPosting` schema rather than emitted empty.
+
+### Changed — Centered reading column site-wide (2026-08-14)
+- Text-heavy sections no longer hug the left edge of the 1100px `.wrap` with an empty right gutter. The **container** is now narrowed to 808px (760px of text + the 24px wrap padding) and centered, so the heading and body copy keep the same left edge and the column sits in the middle of the page. Line length is unchanged — only the position is.
+- Applied to: `index.html` (`#what-is` and `#faq` only — the card/grid sections keep the full-width wrap), `tutorials.html` (hero + video list), all four tutorial pages (hero, video, content body), and generated blog post pages via `tools/chrome.js` (`.post-page .wrap`).
+- The now-redundant `max-width: 760px` declarations on `.prose`, `.benefit-list`, `.tutorial-desc`, `.post-head` and `.post-cover` were removed so those children fill the centered column instead of nesting a second, narrower box inside it.
+- Side effect worth knowing: the embedded tutorial videos on `tutorials.html` and the four tutorial pages now render 760px wide rather than 1100px, since they share the same centered column. `abilities-directory.html` needed no change — its constrained blocks already used `margin: 0 auto`.
+
 ### Added — Blog section + Sveltia CMS (2026-08-14)
 - **`/blog/` section**, generated from Markdown in `content/blog/` by `tools/build-blog.js`. Each post becomes a static, crawlable `/blog/<slug>/index.html`; the index lists every non-draft post newest-first. Ported from the [seo-schema-markup](https://github.com/bilalnaseer/seo-schema-markup) repo's blog pipeline and re-skinned to this site's chrome.
 - **`tools/chrome.js`** — shared `<head>`, topbar, closer, footer and CSS for generated pages, matching the hand-written tutorial pages (same tokens, theme toggle, dropdown nav). Nav wraps instead of disappearing below 640px, since generated pages carry no hamburger script.

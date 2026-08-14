@@ -205,6 +205,15 @@
       }
     }
 
+    /* ----- centered reading column -----
+       Hero, videos and copy share one narrower, page-centered column so every
+       left edge lines up instead of the text hugging the left of a 1100px
+       band. The topbar and footer keep the full-width wrap. */
+    .page-hero .wrap,
+    .tutorials .wrap {
+      max-width: 808px;
+    }
+
     /* ----- page header ----- */
     .page-hero {
       padding: 72px 0 56px;
@@ -291,7 +300,6 @@
       margin: 8px 0 0 0;
       color: var(--muted);
       font-size: 16px;
-      max-width: 760px;
     }
 
     .video-frame {
