@@ -246,6 +246,10 @@
     color: var(--muted); margin: 0 0 28px;
   }
   .post-meta a { color: var(--muted); }
+  /* Visible aggregate rating. Google requires the rating that appears in
+     schema to be visible on the page — this is that visible copy. */
+  .post-rating { display: flex; align-items: center; gap: 6px; font-size: 17px; margin: -18px 0 26px; color: var(--ink); }
+  .post-rating-star { color: var(--amber); font-size: 1.15em; line-height: 1; }
   .post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; }
   .post-tags li {
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
@@ -470,6 +474,7 @@
       <div class="post-head">
         <h1>What Is WordPress MCP? A Plain-English Guide</h1>
         <p class="post-meta"><time datetime="2026-08-14T00:00:00.000Z">14 August 2026</time> · by <a href="https://websensepro.com" rel="noopener">Bilal Naseer</a></p>
+        
       </div>
       
       <ul class="post-tags"><li>WordPress MCP</li><li>Model Context Protocol</li><li>AI agents</li></ul>

@@ -111,6 +111,12 @@ That invite is the only time they interact with GitHub. From then on they visit
 - **Cover images** go to `assets/img/blog/` and are used for the card, the
   social preview and the `BlogPosting` schema image.
 - **`draft: true`** hides a post from the site and the sitemap entirely.
+- **Ratings are optional and must be real.** Filling in *Aggregate rating value*
+  and *Number of ratings* adds a star rating to the page and to the schema (as a
+  `CreativeWorkSeries` node — Google rejects `aggregateRating` on `BlogPosting`,
+  so the `BlogPosting` node is swapped out when a rating is present). Leave them
+  blank and no rating schema is emitted. Only use genuine numbers: invented
+  ratings can get rich results removed across the whole domain.
 
 ---
 

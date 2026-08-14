@@ -239,6 +239,11 @@ function loadPosts() {
         image: data.image || '',
         tags: Array.isArray(data.tags) ? data.tags : (data.tags ? [data.tags] : []),
         draft: String(data.draft) === 'true',
+        rating: {
+          value: data.rating_value != null ? String(data.rating_value).trim() : '',
+          count: data.rating_count != null ? String(data.rating_count).trim() : '',
+          best: data.best_rating != null ? String(data.best_rating).trim() : '',
+        },
         faqs: extractFaqs(body),
         bodyHtml: markdown(body),
       };
@@ -261,7 +266,36 @@ function jsonLd(obj) {
   return `<script type="application/ld+json">\n${JSON.stringify(prune(obj), null, 2)}\n</script>`;
 }
 
+/* Whether a post carries a genuine, manually-entered aggregate rating. Only
+   emits when a value AND a positive count are present; blank => omitted. */
+function hasRating(p) {
+  return p.rating && p.rating.value !== '' && Number(p.rating.count) > 0 && !isNaN(Number(p.rating.value));
+}
+function bestRating(p) {
+  return p.rating.best !== '' ? String(p.rating.best) : '5';
+}
+
+/* When a post has a rating we emit it on a CreativeWorkSeries node (name = post
+   title) and DROP the BlogPosting. Google rejects aggregateRating on
+   BlogPosting ("Invalid object type for field <parent_node>"), but
+   CreativeWorkSeries IS a supported review-snippet type, so this stays valid
+   and eligible for star rich results. Same pattern as seoschemamarkup.com.
+   Posts without a rating get the normal BlogPosting for Article SEO. */
 function articleJsonLd(p) {
+  if (hasRating(p)) {
+    return jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWorkSeries',
+      name: p.title,
+      url: SITE + p.url,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: String(p.rating.value),
+        ratingCount: String(p.rating.count),
+        bestRating: bestRating(p),
+      },
+    });
+  }
   return jsonLd({
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -326,6 +360,7 @@ function postPage(p) {
       <div class="post-head">
         <h1>${esc(p.title)}</h1>
         <p class="post-meta">${dateLine}</p>
+        ${hasRating(p) ? `<p class="post-rating" aria-label="Rated ${esc(p.rating.value)} out of ${esc(bestRating(p))}"><span class="post-rating-star" aria-hidden="true">★</span> <strong>${esc(p.rating.value)}</strong> <span class="muted">/ ${esc(bestRating(p))} · ${esc(p.rating.count)} rating${Number(p.rating.count) === 1 ? '' : 's'}</span></p>` : ''}
       </div>
       ${p.image ? `<img class="post-cover" src="${esc(p.image)}" alt="${esc(p.title)}" loading="eager">` : ''}
       ${p.tags.length ? `<ul class="post-tags">${p.tags.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
