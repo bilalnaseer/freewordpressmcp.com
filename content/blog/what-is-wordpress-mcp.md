@@ -1,14 +1,18 @@
 ---
-title: "What Is WordPress MCP? A Plain-English Guide"
-slug: "what-is-wordpress-mcp"
-description: "WordPress MCP lets Claude, Cursor, Codex or any MCP agent read and edit your site directly. Here's what MCP is, how the free plugin works, and how to set it up."
+title: What Is WordPress MCP? A Plain-English Guide
+slug: what-is-wordpress-mcp
+description: WordPress MCP lets Claude, Cursor, Codex or any MCP agent read and edit your site directly. Here's what MCP is, how the free plugin works, and how to set it up.
 date: 2026-08-14
-author: "Bilal Naseer"
-author_url: "https://websensepro.com"
+updated: ''
+author: admin
+author_url: ''
 tags:
   - WordPress MCP
   - Model Context Protocol
   - AI agents
+rating_value: 4.9
+rating_count: 50
+best_rating: 5
 draft: false
 ---
 
