@@ -7,7 +7,8 @@ updated: 2026-08-21
 author: admin
 author_url: ''
 image: /assets/img/blog/Claude-AI-WordPress.jpg
-tags: []
+tags:
+  - Claude AI WordPress
 rating_value: 5
 rating_count: 143
 best_rating: 5
