@@ -8,7 +8,7 @@ author: admin
 author_url: ''
 image: /assets/img/blog/Claude-AI-WordPress.jpg
 tags:
-  - '[Claude AI WordPress] [AI Gents] [WordPress MCP]'
+  - '[Claude AI WordPress]'
 rating_value: 5
 rating_count: 143
 best_rating: 5
