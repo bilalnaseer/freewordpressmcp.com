@@ -33,8 +33,6 @@ An **MCP server for WordPress** bridges that gap for your website. Once set up, 
 
 It's a genuinely big deal for bloggers, developers, and agencies managing WordPress sites at scale.
 
-***
-
 ## What to Look for in a WordPress MCP Server
 
 Before committing to any solution, here are the key factors worth evaluating:
@@ -97,7 +95,7 @@ If "setup in minutes" is your primary requirement, **WPVibe** is worth a serious
 
 You install the free WordPress plugin, connect your site once, and your MCP-compatible AI client becomes a WordPress co-pilot. WPVibe handles authentication and encrypts credentials with AES-256-GCM, so security isn't an afterthought.
 
-The free plan includes every tool and skill, with a daily allowance of WordPress actions, enough to evaluate the product thoroughly and handle moderate usage. WPVibe works with the free plans of Claude and ChatGPT.
+The free plan includes every tool and skill, with a daily allowance of WordPress actions that is enough to evaluate the product thoroughly and handle moderate usage. WPVibe works with the free plans of Claude and ChatGPT.
 
 The trade-off compared to Free WordPress MCP is that WPVibe relies on an external service rather than running entirely on your own server, which some users will be comfortable with and others won't.
 
@@ -162,8 +160,6 @@ Here's the honest, simplified answer:
 **If SEO and content workflows are your primary use case**, **IATO MCP**'s auto-detection of SEO plugins and built-in rollback capability makes it a standout choice for content teams.
 
 **If you're already on InstaWP's managed platform**, the built-in MCP support is the obvious choice — it removes every infrastructure headache from the equation.
-
-***
 
 ## Final Thoughts
 
