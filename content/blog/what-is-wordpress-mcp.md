@@ -6,6 +6,7 @@ date: 2026-08-14
 updated: ''
 author: admin
 author_url: ''
+image: /assets/img/blog/WordPress-MCP.jpg
 tags:
   - WordPress MCP
   - Model Context Protocol
